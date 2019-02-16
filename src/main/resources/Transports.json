@@ -1,0 +1,13 @@
+{
+  "Transport Method":{
+    "Name": "Name",
+    "Start Chunk": "",
+    "Destination": 2000,
+    "Requirements":[
+      {"Skill": "",
+      "Level": 0},
+      {"Item": ""},
+      {"Quest":[]}
+  ]
+  }
+}
