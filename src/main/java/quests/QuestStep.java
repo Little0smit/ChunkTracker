@@ -1,7 +1,7 @@
 package quests;
 
+import Databases.UnlockedItemDatabase;
 import Items.Item;
-import Items.ItemDatabase;
 
 import java.util.ArrayList;
 
@@ -40,8 +40,8 @@ public class QuestStep {
 
         //Check Items
         for (String item:itemReqs) {
-            if (ItemDatabase.contains(item)){
-                Item i = ItemDatabase.getItem(item);
+            if (UnlockedItemDatabase.contains(item)){
+                Item i = UnlockedItemDatabase.getItem(item);
                 if(!i.foundIn(unlockedChunks)) return false;
             } else {
                 return false;

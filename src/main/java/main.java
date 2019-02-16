@@ -1,8 +1,9 @@
+import Databases.Quests;
+import Databases.UnlockedItemDatabase;
 import Items.Item;
-import Items.ItemDatabase;
+import constants.Constant;
 import quests.Quest;
 import quests.QuestStep;
-import constants.Constant;
 
 import java.util.ArrayList;
 
@@ -10,9 +11,10 @@ public class main {
     private static ArrayList<Integer> unlockedChunks;
     private static int[] currentSkills;
     private static ArrayList<String> completedQuests;
-    //ItemDatabase db = new ItemDatabase();
-    public static void main(String[] args) {
 
+    //Test main to ensure things are working.
+    public static void main(String[] args) {
+        playerTest();
         unlockedChunks = new ArrayList();
         unlockedChunks.add(1);
         currentSkills = new int[Constant.NUMBER_OF_Skills];
@@ -25,7 +27,7 @@ public class main {
         chunks.add(1);
         Item item = new Item("Test Item", chunks);
 
-        ItemDatabase.addToDB(item);
+        UnlockedItemDatabase.addToDB(item);
 
         ArrayList<String> itemReqs = new ArrayList();
         itemReqs.add("Test Item 2");
@@ -44,4 +46,69 @@ public class main {
         System.out.println();
         System.out.println("Quest: " + quest.getName() + " has a completable section: " + quest.isCompletable(unlockedChunks, currentSkills,completedQuests));
     }
+
+    public static void playerTest(){
+        Player p = new Player();
+        unlockedChunks = new ArrayList();
+        completedQuests = new ArrayList<String>();
+        currentSkills = new int[Constant.NUMBER_OF_Skills];
+
+        for (int chunk:unlockedChunks) {
+            p.unlockChunk(chunk);
+        }
+
+        for (int i = 0; i < Constant.NUMBER_OF_Skills; i++) {
+            p.setCurrentSkillLvl(i,currentSkills[i]);
+        }
+
+        for (String quest:completedQuests) {
+            p.completeQuest(quest);
+        }
+
+        ArrayList<Quest> allQuests = new ArrayList();
+        allQuests = createQuests();
+        for (Quest q:allQuests) {
+            Quests.addToDB(q);
+        }
+
+        System.out.println("10");
+    }
+
+    private static ArrayList<Quest> createQuests() {
+        ArrayList<Quest> quests = new ArrayList();
+        //Create Cooks assistant and imp catcher;
+
+        //Imp Catcher
+        ArrayList<String> itemReqs = new ArrayList();
+        itemReqs.add("Yellow Bead");
+        itemReqs.add("Red Bead");
+        itemReqs.add("Black Bead");
+        itemReqs.add("While Bead");
+        QuestStep qs1 = new QuestStep(1, "Hand in beads to wizard", itemReqs,12337);
+        ArrayList<QuestStep> questSteps = new ArrayList();
+        questSteps.add(qs1);
+
+        int[] skillReqs = new int[Constant.NUMBER_OF_Skills];
+        for (int i = 0; i < Constant.NUMBER_OF_Skills; i++) {
+            skillReqs[i] = 0;
+        }
+        ArrayList<String> questReqs = new ArrayList();
+        Quest q1 = new Quest("Imp Catcher", questSteps,12337, skillReqs, 0, questReqs);
+        quests.add(q1);
+
+        //Cooks assistant
+        itemReqs = new ArrayList();
+        itemReqs.add("Pot of Flour");
+        itemReqs.add("Egg");
+        itemReqs.add("Bucket of Milk");
+        qs1 = new QuestStep(1, "Hand in ingredients to chef", itemReqs,12850);
+        questSteps = new ArrayList();
+        questSteps.add(qs1);
+
+
+        Quest q2 = new Quest("Cooks Assistant", questSteps,12850, skillReqs, 0, questReqs);
+        quests.add(q2);
+        return quests;
+    }
 }
+

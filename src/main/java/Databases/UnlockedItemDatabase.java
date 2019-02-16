@@ -1,18 +1,18 @@
-package Items;
+package Databases;
 
-import com.sun.istack.internal.NotNull;
+import Items.Item;
 
 import java.util.HashMap;
 
-public class ItemDatabase {
-    private static HashMap<String ,Item> accessibleItems = new HashMap<String, Item>();
+public class UnlockedItemDatabase {
+    private static HashMap<String , Item> accessibleItems = new HashMap<String, Item>();
 
     public static void addToDB(Item item){
         if(!accessibleItems.containsKey(item.getName()))
         accessibleItems.put(item.getName(), item);
     }
 
-    public static boolean contains(@NotNull Item item){
+    public static boolean contains(Item item){
         return accessibleItems.containsKey(item.getName());
     }
 
