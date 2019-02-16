@@ -1,0 +1,11 @@
+{  
+  "Item": {
+    "Name": "Name",
+    "Equipable": true,
+    "Stats":{
+      "Offensive":[0,0,0,0,0],
+      "Deffensive":[0,0,0,0,0],
+      "Other":[0,0,0,0,0]
+    }
+  },
+}
