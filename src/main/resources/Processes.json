@@ -1,0 +1,8 @@
+{
+  "Processing": {
+    "Skill": "Skill Name",
+    "Input": ["Item"],
+    "Processing Tool": "",
+    "Output": ["Item"]
+  },
+}
