@@ -1,0 +1,20 @@
+{
+  "Quest": {
+    "Name": "Quest Name",
+    "Steps": [
+      {"Step Number": 1,
+        "Step Description": "",
+        "Items Required": [""],
+        "Chunk Location": 2000,
+        "Extra Info": "Any extra info about step"
+      }
+    ],
+    "Starting Chunk": 2000,
+    "Requirements":{
+      "Quests":[],
+      "Skills":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+      "Quest Points":0
+    }
+  },
+ 
+ }
