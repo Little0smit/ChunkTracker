@@ -1,0 +1,75 @@
+{
+  "Quest": {
+    "Name": "Quest Name",
+    "Steps": [
+      {"Step Number": 1,
+        "Step Description": "",
+        "Items Required": [""],
+        "Chunk Location": 2000,
+        "Extra Info": "Any extra info about step"
+      }
+    ],
+    "Starting Chunk": 2000,
+    "Requirements":{
+      "Quests":[],
+      "Skills":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+      "Quest Points":0
+    }
+  },
+  
+  "Item": {
+    "Name": "Name",
+    "Equipable": true,
+    "Stats":{
+      "Offensive":[0,0,0,0,0],
+      "Deffensive":[0,0,0,0,0],
+      "Other":[0,0,0,0,0]
+    }
+  },
+  
+  "Shop": {
+    "Name": "Name",
+    "Location": [2000],
+    "Stock":[""]
+  },
+  
+  "Mob":{
+    "Name": "",
+    "Combat Lvl": 2,
+    "Locations":[2000],
+    "Drops":[""]
+  },
+  
+  "Chunk":{
+    "Chunk Number": 12850,
+    "Chunk Name": "Lumbridge Castle",
+    "Mobs": [
+      {"Name": "", "Level":2}
+      ],
+    "Skilling Resources":[],
+    "Item Spawns": [""],
+    "Processing Tools": [""],
+    "Shops":[],
+    "Other Notes":""
+  },
+  
+  "Processing": {
+    "Skill": "Skill Name",
+    "Input": ["Item"],
+    "Processing Tool": "",
+    "Output": ["Item"]
+  },
+  
+  "Transport Method":{
+    "Name": "Name",
+    "Start Chunk": "",
+    "Destination": 2000,
+    "Requirements":[
+      {"Skill": "",
+      "Level": 0},
+      {"Item": ""},
+      {"Quest":[]}
+  ]
+  }
+}
+
