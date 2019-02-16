@@ -12,6 +12,9 @@ public class main {
     private static int[] currentSkills;
     private static ArrayList<String> completedQuests;
 
+    //TODO create chunk class
+    //TODO create skilling/processesing calcs
+    //TODO create task class
     //Test main to ensure things are working.
     public static void main(String[] args) {
         playerTest();
@@ -47,6 +50,7 @@ public class main {
         System.out.println("Quest: " + quest.getName() + " has a completable section: " + quest.isCompletable(unlockedChunks, currentSkills,completedQuests));
     }
 
+    //Junk test method.
     public static void playerTest(){
         Player p = new Player();
         unlockedChunks = new ArrayList();
@@ -75,6 +79,7 @@ public class main {
     }
 
     private static ArrayList<Quest> createQuests() {
+        //TODO incorporate a filereader rather than manual quest info.
         ArrayList<Quest> quests = new ArrayList();
         //Create Cooks assistant and imp catcher;
 

@@ -1,7 +1,7 @@
 package Items;
 
 import java.util.ArrayList;
-
+//TODO create equipable class
 public class Item {
     private String name;
     private ArrayList<Integer> locations;
