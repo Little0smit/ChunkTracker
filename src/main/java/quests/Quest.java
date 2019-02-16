@@ -30,7 +30,7 @@ public class Quest {
     /**
      * Returns true if the quest if partially completable with current chunks unlocked.
      */
-    public boolean isCompletable(ArrayList<Integer> unlockedChunks, int[] currentSkills, ArrayList<String> completedQuests){
+    public boolean isCompletable(ArrayList<Integer> unlockedChunks, int[] currentSkills, ArrayList<String> completedQuests, int questPoints){
         if (completed) return false;
         
         //Check pre-quest requirements if it's not been started
@@ -45,6 +45,8 @@ public class Quest {
             for (String s:questReqs){
                 if(!completedQuests.contains(s)) return false;
             }
+            //Check they have enough quest points to start
+            if(questPointsReqs > questPoints) return false;
         }
 
         //Check each step of the quest, returning true if first non completed step is completable.

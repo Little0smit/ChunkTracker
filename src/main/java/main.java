@@ -18,15 +18,15 @@ public class main {
     //Test main to ensure things are working.
     public static void main(String[] args) {
         playerTest();
-        unlockedChunks = new ArrayList();
+        unlockedChunks = new ArrayList<Integer>();
         unlockedChunks.add(1);
         currentSkills = new int[Constant.NUMBER_OF_Skills];
         currentSkills[0] = 2;
         currentSkills[1] = 2;
         currentSkills[2] = 2;
-        completedQuests = new ArrayList();
+        completedQuests = new ArrayList<String>();
 
-        ArrayList<Integer> chunks = new ArrayList();
+        ArrayList<Integer> chunks = new ArrayList<Integer>();
         chunks.add(1);
         Item item = new Item("Test Item", chunks);
 
