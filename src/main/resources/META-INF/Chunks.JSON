@@ -1,0 +1,15 @@
+{
+  "Chunk":{
+    "Chunk Number": 1,
+    "Chunk Name": "",
+    "Mobs": [
+      {"Name": "", "Level":1}
+      ],
+    "Skilling Resources":[],
+    "Item Spawns": [""],
+    "Processing Tools": [""],
+    "Shops":[],
+    "Other Notes":""
+  },
+  
+}
