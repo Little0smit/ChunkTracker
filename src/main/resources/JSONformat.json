@@ -36,7 +36,6 @@
   "Mob":{
     "Name": "",
     "Combat Lvl": 2,
-    "Locations":[2000],
     "Drops":[""]
   },
   
@@ -55,6 +54,7 @@
   
   "Processing": {
     "Skill": "Skill Name",
+    "Level Required": 0,
     "Input": ["Item"],
     "Processing Tool": "",
     "Output": ["Item"]
