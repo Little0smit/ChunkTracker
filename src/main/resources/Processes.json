@@ -1,6 +1,7 @@
 {
   "Processing": {
     "Skill": "Skill Name",
+    "Level Required": 0,
     "Input": ["Item"],
     "Processing Tool": "",
     "Output": ["Item"]
