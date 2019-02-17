@@ -9,7 +9,9 @@ import java.util.HashMap;
 
 //TODO make this class
 public class ProcessingToolDB {
-    private static ArrayList<Process> allProcesses = new ArrayList<Process>();
+    private static HashMap<String, ProcessingTool> allProcesses = new HashMap<String, ProcessingTool>();
 
-    public static  void registerProcess(Process process){ if (!allProcesses.contains(process)){ allProcesses.add(process); } }
+    public static void registerProcess(ProcessingTool process){ if (!allProcesses.containsValue(process)){ allProcesses.put(process.getProcessName(), process); } }
+
+    public static ProcessingTool getProcess(String processName){ return allProcesses.get(processName); }
 }

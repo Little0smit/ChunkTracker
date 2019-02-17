@@ -148,14 +148,14 @@ public class Chunk {
             for (Process process :
                     processingTool.getProcesses()) {
                 boolean gotInputs = true;
-                for (String input :
+                for (Item input :
                         process.getInputs()) {
                     if (!UnlockedItemDatabase.contains(input)) gotInputs = false;
                 }
                 if (gotInputs) {
-                    for (String output :
+                    for (Item output :
                             process.getOutputs()) {
-                        UnlockedItemDatabase.addToDB(ItemDatabase.getItem(output));
+                        UnlockedItemDatabase.addToDB(output);
                     }
                 }
             }

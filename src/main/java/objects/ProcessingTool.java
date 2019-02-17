@@ -4,18 +4,23 @@ package objects;
 public class ProcessingTool {
     Process[] processes;
     int chunkLocation;
+    String processName;
 
     public ProcessingTool(Process[] processes, int chunkLocation) {
         this.processes = processes;
         this.chunkLocation = chunkLocation;
+        this.processName = processName;
     }
 
     public Process[] getProcesses() {
-        //TODO
         return processes;
     }
 
     public int getChunkLocation() {
         return chunkLocation;
+    }
+
+    public String getProcessName() {
+        return processName;
     }
 }
