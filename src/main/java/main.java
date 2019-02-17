@@ -1,9 +1,10 @@
-import Databases.Quests;
-import Databases.UnlockedItemDatabase;
-import Items.Item;
 import constants.Constant;
-import quests.Quest;
-import quests.QuestStep;
+import databases.QuestDatabase;
+import databases.UnlockedItemDatabase;
+import objects.Item;
+import objects.Player;
+import objects.quests.Quest;
+import objects.quests.QuestStep;
 
 import java.util.ArrayList;
 
@@ -72,7 +73,7 @@ public class main {
         ArrayList<Quest> allQuests;
         allQuests = createQuests();
         for (Quest q:allQuests) {
-            Quests.addToDB(q);
+            QuestDatabase.addToDB(q);
         }
 
         System.out.println("10");

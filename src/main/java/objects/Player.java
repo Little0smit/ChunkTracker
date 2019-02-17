@@ -1,3 +1,5 @@
+package objects;
+
 import constants.Constant;
 
 import java.util.ArrayList;
@@ -11,7 +13,7 @@ public class Player {
     public Player(){
         currentStats = new int[Constant.NUMBER_OF_Skills];
         trainableStats = new boolean[Constant.NUMBER_OF_Skills];
-        for(int i=0;i<Constant.NUMBER_OF_Skills;i++){
+        for (int i = 0; i < Constant.NUMBER_OF_Skills; i++) {
             currentStats[i]= 1;
             trainableStats[i] = false;
         }

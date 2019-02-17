@@ -1,7 +1,7 @@
-package quests;
+package objects.quests;
 
-import Databases.UnlockedItemDatabase;
-import Items.Item;
+import databases.UnlockedItemDatabase;
+import objects.Item;
 
 import java.util.ArrayList;
 

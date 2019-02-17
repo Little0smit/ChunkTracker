@@ -1,4 +1,4 @@
-package Items;
+package objects;
 
 import java.util.ArrayList;
 //TODO create equipable class
