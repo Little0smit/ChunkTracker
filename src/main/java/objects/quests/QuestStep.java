@@ -1,9 +1,11 @@
 package objects.quests;
 
+import constants.Skills;
 import databases.UnlockedItemDatabase;
 import objects.Item;
 
 import java.util.ArrayList;
+import java.util.EnumMap;
 
 public class QuestStep {
     private int stepNumber;
@@ -34,7 +36,7 @@ public class QuestStep {
     /**
      *Returns true if section of the quest is completable with current unlocks.
      */
-    public boolean completable(ArrayList<Integer> unlockedChunks, int[] currentSkills){
+    public boolean completable(ArrayList<Integer> unlockedChunks, EnumMap<Skills, Integer> currentSkills){
         //Check Location
         if(!unlockedChunks.contains(chunkLocation)) return false;
 
