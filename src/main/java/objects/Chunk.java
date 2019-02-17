@@ -128,9 +128,9 @@ public class Chunk {
         }
         //objects.Mob Drops
         for (Mob mob : mobs) {
-            ArrayList<String> drops = mob.getDrops();
-            for (String drop : drops) {
-                UnlockedItemDatabase.addToDB(ItemDatabase.getItem(drop));
+            Item[] drops = mob.getDrops();
+            for (Item drop : drops) {
+                UnlockedItemDatabase.addToDB(drop);
             }
         }
         //Skilling Resources
