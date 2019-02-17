@@ -1,4 +1,4 @@
-package quests;
+package objects.quests;
 
 import constants.Constant;
 

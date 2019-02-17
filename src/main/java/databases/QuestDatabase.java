@@ -1,10 +1,10 @@
-package Databases;
+package databases;
 
-import quests.Quest;
+import objects.quests.Quest;
 
 import java.util.HashMap;
 
-public class Quests {
+public class QuestDatabase {
     private static HashMap<String, Quest> quests = new HashMap<String, Quest>();
 
     public static void addToDB(Quest quest){

@@ -1,6 +1,6 @@
-package Databases;
+package databases;
 
-import Items.Item;
+import objects.Item;
 
 import java.util.HashMap;
 
@@ -21,9 +21,6 @@ public class UnlockedItemDatabase {
     }
 
     public static Item getItem(String name) {
-        //if(contains(name)){
             return accessibleItems.get(name);
-        //}
-        //throw new ItemNotStoredException();
     }
 }
