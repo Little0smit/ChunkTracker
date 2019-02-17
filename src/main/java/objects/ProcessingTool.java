@@ -1,12 +1,21 @@
 package objects;
 
-import java.util.ArrayList;
-
 //TODO make this class
 public class ProcessingTool {
+    Process[] processes;
+    int chunkLocation;
 
-    public ArrayList<Process> getProcesses() {
+    public ProcessingTool(Process[] processes, int chunkLocation) {
+        this.processes = processes;
+        this.chunkLocation = chunkLocation;
+    }
+
+    public Process[] getProcesses() {
         //TODO
-        return null;
+        return processes;
+    }
+
+    public int getChunkLocation() {
+        return chunkLocation;
     }
 }

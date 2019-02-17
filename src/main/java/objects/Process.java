@@ -1,17 +1,13 @@
 package objects;
 
-import java.util.ArrayList;
-
-//TODO make this class
 public class Process {
+    Item[] inputs, outputs;
 
-    public ArrayList<String> getInputs() {
-        //TODO
-        return null;
+    public Item[] getInputs() {
+        return inputs;
     }
 
-    public ArrayList<String> getOutputs() {
-        //TODO
-        return null;
+    public Item[] getOutputs() {
+        return outputs;
     }
 }
