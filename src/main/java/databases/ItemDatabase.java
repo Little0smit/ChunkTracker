@@ -10,4 +10,6 @@ public class ItemDatabase {
     public static Item getItem(String name) {
         return allItems.get(name);
     }
+
+    public static  void registerItem(Item item){ allItems.put(item.getName(), item); }
 }

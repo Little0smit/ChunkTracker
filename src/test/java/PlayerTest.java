@@ -1,9 +1,13 @@
 import constants.Constant;
+import constants.Skills;
 import objects.Player;
+import objects.SkillingNode;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+
+import java.util.EnumMap;
 
 public class PlayerTest {
     Player p;
@@ -20,26 +24,26 @@ public class PlayerTest {
     @Test
     public void getCurrentStats() {
         System.out.println("test 1");
-        int[] testArray = new int[Constant.NUMBER_OF_Skills];
-        for (int i = 0; i < Constant.NUMBER_OF_Skills; i++) {
-            testArray[i] = 1;
+        EnumMap<Skills, Integer> testArray = new EnumMap<Skills, Integer>(Skills.class);
+        for (Skills skill : Skills.values()) {
+            testArray.put(skill, 1);
         }
-        Assert.assertArrayEquals(testArray, p.getCurrentStats());
+        Assert.assertEquals(testArray, p.getCurrentStats());
     }
 
     @Test
     public void getCurrentSkillLvl() {
-        p.setCurrentSkillLvl(Constant.Agility, 3);
-        Assert.assertEquals(p.getCurrentSkillLvl(Constant.Agility), 3);
-        Assert.assertEquals(p.getCurrentSkillLvl(Constant.Attack), 1);
+        p.setCurrentSkillLvl(Skills.Agility, 3);
+        Assert.assertEquals(p.getCurrentSkillLvl(Skills.Agility), 3);
+        Assert.assertEquals(p.getCurrentSkillLvl(Skills.Attack), 1);
 
     }
 
     @Test
     public void setCurrentSkillLvl() {
-        Assert.assertEquals(p.getCurrentSkillLvl(Constant.Agility), 1);
-        p.setCurrentSkillLvl(Constant.Agility, 3);
-        Assert.assertEquals(p.getCurrentSkillLvl(Constant.Agility), 3);
+        Assert.assertEquals(p.getCurrentSkillLvl(Skills.Agility), 1);
+        p.setCurrentSkillLvl(Skills.Agility, 3);
+        Assert.assertEquals(p.getCurrentSkillLvl(Skills.Agility), 3);
     }
 
     @Test

@@ -1,28 +1,42 @@
 package objects;
 
+import constants.SkillingNodeType;
+import constants.Skills;
+
 import java.util.ArrayList;
-import java.util.HashMap;
 
-//TODO make this class
-
-//Code here is very messy and trial code to figure out
-//how best to make this class.
-//TODO tidy.finish this before commit
 public class SkillingNode {
-    HashMap<String, Integer> skill = new HashMap<String, Integer>();
-    SkillLevelItem skillLevelItem;
+    SkillRequirements requirements;
+    ArrayList<String> questRequirements;
+    Item[] gainedItems;
+    SkillingNodeType type;
+    Skills nodeSkill;
 
-    public ArrayList<String> getOutputs() {
-        //TODO
-        return null;
+    public SkillingNode (SkillRequirements requirements, ArrayList<String> questRequirements, Item[] gainedItems, SkillingNodeType type, Skills nodeSkill){
+        this.requirements = requirements;
+        this.gainedItems = gainedItems;
+        this.nodeSkill = nodeSkill;
+        this.questRequirements = questRequirements;
+        this.type = type;
     }
 
-    private class SkillLevelItem {
-        HashMap<String, Integer> hashMap = new HashMap<String, Integer>();
+    public SkillRequirements getRequirements() {
+        return requirements;
+    }
 
-        public void test() {
-            hashMap.put("String", 1);
-        }
+    public ArrayList<String> getQuestRequirements() {
+        return questRequirements;
+    }
 
+    public Item[] getOutputs() {
+        return gainedItems;
+    }
+
+    public SkillingNodeType getType() {
+        return type;
+    }
+
+    public Skills getNodeSkill() {
+        return nodeSkill;
     }
 }

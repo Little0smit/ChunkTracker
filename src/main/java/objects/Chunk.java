@@ -136,10 +136,10 @@ public class Chunk {
         //Skilling Resources
         for (SkillingNode node :
                 skillingNodes) {
-            ArrayList<String> items = node.getOutputs();
-            for (String item :
+            Item[] items = node.getOutputs();
+            for (Item item :
                     items) {
-                UnlockedItemDatabase.addToDB(ItemDatabase.getItem(item));
+                UnlockedItemDatabase.addToDB(item);
             }
         }
         //Skilling Processes
