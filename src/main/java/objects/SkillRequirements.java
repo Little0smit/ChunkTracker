@@ -15,8 +15,16 @@ public class SkillRequirements {
 		}
 	}
 
+	public SkillRequirements (EnumMap<Skills, Integer> skillReqs){
+		skills = new EnumMap<Skills, Integer>(skillReqs);
+	}
+
 	public EnumMap<Skills, Integer> getSkills() {
 		return skills;
+	}
+
+	public void setSkillRequirement (Skills skill, int level){
+		skills.put(skill, level);
 	}
 
 	public boolean fulfillsRequirements(EnumMap<Skills, Integer> currentSkills){

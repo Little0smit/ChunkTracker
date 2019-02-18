@@ -1,18 +1,20 @@
 package objects;
 
+import java.util.ArrayList;
+
 //TODO make this class
 public class ProcessingTool {
-    Process[] processes;
+    ArrayList<Process> processes;
     int chunkLocation;
-    String processName;
+    String processToolName;
 
-    public ProcessingTool(Process[] processes, int chunkLocation) {
+    public ProcessingTool(ArrayList<Process> processes, int chunkLocation, String processToolName) {
         this.processes = processes;
         this.chunkLocation = chunkLocation;
-        this.processName = processName;
+        this.processToolName = processToolName;
     }
 
-    public Process[] getProcesses() {
+    public ArrayList<Process> getProcesses() {
         return processes;
     }
 
@@ -21,6 +23,6 @@ public class ProcessingTool {
     }
 
     public String getProcessName() {
-        return processName;
+        return processToolName;
     }
 }

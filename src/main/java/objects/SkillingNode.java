@@ -8,11 +8,11 @@ import java.util.ArrayList;
 public class SkillingNode {
     SkillRequirements requirements;
     ArrayList<String> questRequirements;
-    Item[] gainedItems;
+    ArrayList<String> gainedItems;
     SkillingNodeType type;
     Skills nodeSkill;
 
-    public SkillingNode (SkillRequirements requirements, ArrayList<String> questRequirements, Item[] gainedItems, SkillingNodeType type, Skills nodeSkill){
+    public SkillingNode (SkillRequirements requirements, ArrayList<String> questRequirements, ArrayList<String> gainedItems, SkillingNodeType type, Skills nodeSkill){
         this.requirements = requirements;
         this.gainedItems = gainedItems;
         this.nodeSkill = nodeSkill;
@@ -28,7 +28,7 @@ public class SkillingNode {
         return questRequirements;
     }
 
-    public Item[] getOutputs() {
+    public ArrayList<String> getOutputs() {
         return gainedItems;
     }
 
