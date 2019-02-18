@@ -128,9 +128,9 @@ public class Chunk {
         }
         //objects.Mob Drops
         for (Mob mob : mobs) {
-            ArrayList<String> drops = mob.getDrops();
-            for (String drop : drops) {
-                UnlockedItemDatabase.addToDB(ItemDatabase.getItem(drop));
+            Item[] drops = mob.getDrops();
+            for (Item drop : drops) {
+                UnlockedItemDatabase.addToDB(drop);
             }
         }
         //Skilling Resources
@@ -148,14 +148,14 @@ public class Chunk {
             for (Process process :
                     processingTool.getProcesses()) {
                 boolean gotInputs = true;
-                for (String input :
+                for (Item input :
                         process.getInputs()) {
                     if (!UnlockedItemDatabase.contains(input)) gotInputs = false;
                 }
                 if (gotInputs) {
-                    for (String output :
+                    for (Item output :
                             process.getOutputs()) {
-                        UnlockedItemDatabase.addToDB(ItemDatabase.getItem(output));
+                        UnlockedItemDatabase.addToDB(output);
                     }
                 }
             }

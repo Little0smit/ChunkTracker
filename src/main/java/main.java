@@ -1,4 +1,5 @@
 import constants.Constant;
+import constants.Skills;
 import databases.QuestDatabase;
 import databases.UnlockedItemDatabase;
 import objects.Item;
@@ -7,10 +8,11 @@ import objects.quests.Quest;
 import objects.quests.QuestStep;
 
 import java.util.ArrayList;
+import java.util.EnumMap;
 
 public class main {
     private static ArrayList<Integer> unlockedChunks;
-    private static int[] currentSkills;
+    private static EnumMap<Skills, Integer> currentSkills;
     private static ArrayList<String> completedQuests;
 
     //TODO create chunk class
@@ -21,10 +23,13 @@ public class main {
         playerTest();
         unlockedChunks = new ArrayList<Integer>();
         unlockedChunks.add(1);
-        currentSkills = new int[Constant.NUMBER_OF_Skills];
-        currentSkills[0] = 2;
-        currentSkills[1] = 2;
-        currentSkills[2] = 2;
+        currentSkills = new EnumMap<Skills, Integer>(Skills.class);
+        for (Skills skill : Skills.values()){
+            currentSkills.put(skill, 1);
+        }
+        currentSkills.put(Skills.Attack, 2);
+        currentSkills.put(Skills.Defence, 2);
+        currentSkills.put(Skills.Strength, 2);
         completedQuests = new ArrayList<String>();
 
         ArrayList<Integer> chunks = new ArrayList<Integer>();
@@ -34,17 +39,21 @@ public class main {
         UnlockedItemDatabase.addToDB(item);
 
         ArrayList<String> itemReqs = new ArrayList<String>();
-        itemReqs.add("Test Item 2");
+        itemReqs.add("Test Item");
         ArrayList<String> itemReqs2 = new ArrayList<String>();
         QuestStep q1= new QuestStep(1,"step 1",itemReqs,1);
         QuestStep q2 = new QuestStep(2,"step 2", itemReqs2, 2);
         ArrayList<QuestStep> steps = new ArrayList<QuestStep>();
         steps.add(q1);
         steps.add(q2);
-        int[] skillReqs = new int[Constant.NUMBER_OF_Skills];
-        skillReqs[0] = 1;
-        skillReqs[1] = 1;
-        skillReqs[2] = 1;
+        EnumMap<Skills, Integer> skillReqs = new EnumMap<Skills, Integer>(Skills.class);
+        for (Skills skill : Skills.values()){
+            skillReqs.put(skill, 1);
+        }
+        skillReqs.put(Skills.Attack, 2);
+        skillReqs.put(Skills.Defence, 2);
+        skillReqs.put(Skills.Strength, 2);
+
         ArrayList<String> questReqs = new ArrayList<String>();
         Quest quest = new Quest("Quest 1",steps,1,skillReqs,0,questReqs);
         System.out.println();
@@ -56,14 +65,18 @@ public class main {
         Player p = new Player();
         unlockedChunks = new ArrayList<Integer>();
         completedQuests = new ArrayList<String>();
-        currentSkills = new int[Constant.NUMBER_OF_Skills];
+        currentSkills = new EnumMap<Skills, Integer>(Skills.class);
+
+        for (Skills skill : Skills.values()){
+            currentSkills.put(skill, 1);
+        }
 
         for (int chunk:unlockedChunks) {
             p.unlockChunk(chunk);
         }
 
-        for (int i = 0; i < Constant.NUMBER_OF_Skills; i++) {
-            p.setCurrentSkillLvl(i,currentSkills[i]);
+        for (Skills skill : Skills.values()) {
+            p.setCurrentSkillLvl(skill, currentSkills.get(skill));
         }
 
         for (String quest:completedQuests) {
@@ -94,9 +107,9 @@ public class main {
         ArrayList<QuestStep> questSteps = new ArrayList<QuestStep>();
         questSteps.add(qs1);
 
-        int[] skillReqs = new int[Constant.NUMBER_OF_Skills];
-        for (int i = 0; i < Constant.NUMBER_OF_Skills; i++) {
-            skillReqs[i] = 0;
+        EnumMap<Skills, Integer> skillReqs = new EnumMap<Skills, Integer>(Skills.class);
+        for (Skills skill : Skills.values()){
+            skillReqs.put(skill, 1);
         }
         ArrayList<String> questReqs = new ArrayList<String>();
         Quest q1 = new Quest("Imp Catcher", questSteps,12337, skillReqs, 0, questReqs);

@@ -1,12 +1,25 @@
 package objects;
 
-import java.util.ArrayList;
-
-//TODO complete this class
 public class Mob {
-    public ArrayList<String> getDrops() {
-        //TODO
-        return null;
+    String name;
+    int combatLvl;
+    Item[] drops;
+
+    public Mob(String name, int combatLvl, Item[] drops) {
+        this.name = name;
+        this.combatLvl = combatLvl;
+        this.drops = drops;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public int getCombatLvl() {
+        return combatLvl;
+    }
+
+    public Item[] getDrops() {
+        return drops;
+    }
 }

@@ -1,14 +1,15 @@
 package objects.quests;
 
-import constants.Constant;
+import constants.Skills;
 
 import java.util.ArrayList;
+import java.util.EnumMap;
 
 public class Quest {
     private String name;
     private ArrayList<QuestStep> steps;
     private int startingChunk;
-    private int[] skillReqs;
+    private EnumMap<Skills, Integer> skillReqs;
     private int questPointsReqs;
     private ArrayList<String> questReqs;
 
@@ -16,7 +17,7 @@ public class Quest {
     private boolean started;
     private boolean completed;
 
-    public Quest(String name, ArrayList<QuestStep> steps, int startingChunk, int[] skillReqs, int questPointsReqs, ArrayList<String> questReqs) {
+    public Quest(String name, ArrayList<QuestStep> steps, int startingChunk, EnumMap<Skills, Integer> skillReqs, int questPointsReqs, ArrayList<String> questReqs) {
         this.name = name;
         this.steps = steps;
         this.startingChunk = startingChunk;
@@ -30,7 +31,7 @@ public class Quest {
     /**
      * Returns true if the quest if partially completable with current chunks unlocked.
      */
-    public boolean isCompletable(ArrayList<Integer> unlockedChunks, int[] currentSkills, ArrayList<String> completedQuests, int questPoints){
+    public boolean isCompletable(ArrayList<Integer> unlockedChunks, EnumMap<Skills, Integer> currentSkills, ArrayList<String> completedQuests, int questPoints){
         if (completed) return false;
         
         //Check pre-quest requirements if it's not been started
@@ -38,8 +39,8 @@ public class Quest {
             //Check you have access to start
             if(!unlockedChunks.contains(startingChunk)) return false;
             //Check pre quest skill requirement
-            for (int i = 0; i < Constant.NUMBER_OF_Skills; i++) {
-                if(currentSkills[i] < skillReqs[i]) return false;
+            for (Skills skill : Skills.values()) {
+                if(currentSkills.get(skill) < skillReqs.get(skill)) return false;
             }
             //Check pre quest completion requirements
             for (String s:questReqs){

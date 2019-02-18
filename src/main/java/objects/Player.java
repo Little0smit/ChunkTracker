@@ -1,38 +1,41 @@
 package objects;
 
+import com.sun.org.apache.xpath.internal.operations.Bool;
 import constants.Constant;
+import constants.Skills;
 
 import java.util.ArrayList;
+import java.util.EnumMap;
 
 public class Player {
-    private int[] currentStats;
-    private boolean[] trainableStats;
+    private EnumMap<Skills, Integer> currentStats;
+    private EnumMap<Skills, Boolean> trainableStats;
     private ArrayList<String> completedQuests;
     private ArrayList<Integer> unlockedChunks;
 
     public Player(){
-        currentStats = new int[Constant.NUMBER_OF_Skills];
-        trainableStats = new boolean[Constant.NUMBER_OF_Skills];
-        for (int i = 0; i < Constant.NUMBER_OF_Skills; i++) {
-            currentStats[i]= 1;
-            trainableStats[i] = false;
+        currentStats = new EnumMap<Skills, Integer>(Skills.class);
+        trainableStats = new EnumMap<Skills, Boolean>(Skills.class);
+        for (Skills skill : Skills.values()) {
+            currentStats.put(skill, 1);
+            trainableStats.put(skill, false);
         }
     }
 
-    public int[] getCurrentStats() {
+    public EnumMap<Skills, Integer> getCurrentStats() {
         return currentStats;
     }
 
-    public int getCurrentSkillLvl(int skill){
-        return currentStats[skill];
+    public int getCurrentSkillLvl(Skills skill){
+        return currentStats.get(skill);
     }
 
-    public void setCurrentSkillLvl(int skill, int lvl){
-        currentStats[skill] = lvl;
+    public void setCurrentSkillLvl(Skills skill, int lvl){
+        currentStats.put(skill, lvl);
     }
 
-    public boolean isTrainable(int i) {
-        return trainableStats[i];
+    public boolean isTrainable(Skills skill) {
+        return trainableStats.get(skill);
     }
 
     public ArrayList<Integer> getUnlockedChunks() {
@@ -43,8 +46,8 @@ public class Player {
         if(!unlockedChunks.contains(chunk)) unlockedChunks.add(chunk);
     }
 
-    public void skillTrainable(int skill){
-        trainableStats[skill] = true;
+    public void skillTrainable(Skills skill){
+        trainableStats.put(skill, true);
     }
 
     public ArrayList<String> getCompletedQuests() {
@@ -56,8 +59,8 @@ public class Player {
     }
 
     public void printStats(){
-        for (int i = 0; i < Constant.NUMBER_OF_Skills; i++) {
-            System.out.println(Constant.ORDER_OF_STRINGS[i] + ": " + currentStats[i]);
+        for (Skills skill : Skills.values()) {
+            System.out.println(skill.toString() + ": " + currentStats.get(skill));
         }
     }
 }

@@ -1,17 +1,46 @@
 package objects;
 
+import constants.Skills;
+
 import java.util.ArrayList;
 
-//TODO make this class
 public class Process {
+    Item[] inputs, outputs;
+    ArrayList<String> questRequirements;
+    SkillRequirements skillReqs;
+    Skills skillType;
+    String processName;
 
-    public ArrayList<String> getInputs() {
-        //TODO
-        return null;
+    public Process(Item[] inputs, Item[] outputs, ArrayList<String> questRequirements, SkillRequirements skillReqs, Skills skillType, String processName) {
+        this.inputs = inputs;
+        this.outputs = outputs;
+        this.questRequirements = questRequirements;
+        this.skillReqs = skillReqs;
+        this.skillType = skillType;
+        this.processName = processName;
     }
 
-    public ArrayList<String> getOutputs() {
-        //TODO
-        return null;
+    public Item[] getInputs() {
+        return inputs;
+    }
+
+    public Item[] getOutputs() {
+        return outputs;
+    }
+
+    public ArrayList<String> getQuestRequirements() {
+        return questRequirements;
+    }
+
+    public SkillRequirements getSkillReqs() {
+        return skillReqs;
+    }
+
+    public Skills getSkillType() {
+        return skillType;
+    }
+
+    public String getProcessName() {
+        return processName;
     }
 }
