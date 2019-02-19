@@ -1,15 +1,29 @@
-{
-  "Chunk":{
-    "Chunk Number": 1,
-    "Chunk Name": "",
-    "Mobs": [
-      {"Name": "", "Level":1}
-      ],
-    "Skilling Resources":[],
-    "Item Spawns": [""],
-    "Processing Tools": [""],
-    "Shops":[],
-    "Other Notes":""
-  },
-  
-}
+[
+  {
+    "chunkNumber": 1,
+    "chunkName": "1",
+    "mobs": [
+      {
+        "name": "",
+        "combatLvl": 2,
+        "drops":[""]
+      }
+    ],
+    "skillingNodes": [],
+    "groundItems": [
+      ""
+    ],
+    "processingTools": [
+      ""
+    ],
+    "shops": [
+      {
+        "name": "Name",
+        "chunkLocation": [2000],
+        "stock":[""],
+        "questReqs": [""]
+      }
+    ],
+    "otherNotes": ""
+  }
+]

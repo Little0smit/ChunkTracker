@@ -1,7 +1,8 @@
-{
-  "Shop": {
-    "Name": "Name",
-    "Location": [2000],
-    "Stock":[""]
-  },
-}
+[
+  {
+    "name": "Name",
+    "chunkLocation": [2000],
+    "stock":[""],
+    "questReqs": [""]
+  }
+]

@@ -1,9 +1,11 @@
-{
-  "Processing": {
-    "Skill": "Skill Name",
-    "Level Required": 0,
-    "Input": ["Item"],
-    "Processing Tool": "",
-    "Output": ["Item"]
-  },
-}
+[
+  {
+    "skillType": "Attack",
+    "levelRequirement": 0,
+    "inputs": ["Item"],
+    "processingToolName": "",
+    "outputs": ["Item"],
+    "questRequirements": ["none"],
+    "processName": "Process Name"
+  }
+]

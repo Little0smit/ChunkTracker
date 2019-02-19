@@ -1,7 +1,22 @@
-{
-  "Mob":{
-    "Name": "",
-    "Combat Lvl": 2,
-    "Drops":[""]
+[
+  {
+    "name": "Goblin",
+    "combatLvl": 2,
+    "drops":["bar", "foo"]
   },
-}
+  {
+    "name": "Imp",
+    "combatLvl": 33,
+    "drops":["flour", "bucket"]
+  },
+  {
+    "name": "chicken",
+    "combatLvl": 99,
+    "drops":["feather"]
+  },
+  {
+    "name": "yew tree",
+    "combatLvl": 2,
+    "drops":[""]
+  }
+]
