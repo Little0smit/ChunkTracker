@@ -11,13 +11,15 @@ public class Chunk extends NamedThing {
     private ArrayList<SkillingNode> skillingNodes;
     private ArrayList<String> groundItems;
     private ArrayList<String> processingTools;
+    private ArrayList<String> mobNames; //Dummy field to remove the need for duplication in the JSON files
     private ArrayList<Shop> shops;
+    private ArrayList<String> shopNames;
     private int[] accessibleChunks; //0=N, 1=E, 2=S, 3=W
     private String otherNotes;
 
     //Constructors. One with everything, one with just chunk number and name (unsure if needed but made in case.
-    public Chunk(int chunkNumber, String chunkName, ArrayList<Mob> mobs, ArrayList<SkillingNode> skillingNodes,
-                 ArrayList<String> groundItems, ArrayList<String> processingTools, ArrayList<Shop> shops, int[] accessibleChunks) {
+    public Chunk(int chunkNumber, String chunkName, ArrayList<Mob> mobs, ArrayList<SkillingNode> skillingNodes, ArrayList<String> mobNames,
+                 ArrayList<String> groundItems, ArrayList<String> processingTools, ArrayList<Shop> shops, int[] accessibleChunks, ArrayList<String> shopNames) {
         this.chunkNumber = chunkNumber;
         this.chunkName = chunkName;
         this.mobs = mobs;
@@ -26,6 +28,8 @@ public class Chunk extends NamedThing {
         this.processingTools = processingTools;
         this.shops = shops;
         this.accessibleChunks = accessibleChunks;
+        this.mobNames = mobNames;
+        this.shopNames = shopNames;
     }
 
     public Chunk(int chunkNumber, String chunkName) {
@@ -39,7 +43,16 @@ public class Chunk extends NamedThing {
         accessibleChunks = new int[4];
     }
 
-
+    public void lateParse(){
+        for (String s : mobNames){
+            if (Constant.MOB_DATABASE.getElement(s) != null)
+                mobs.add(Constant.MOB_DATABASE.getElement(s));
+        }
+        for (String s : shopNames){
+            if (Constant.SHOP_DATABASE.getElement(s) != null)
+                shops.add(Constant.SHOP_DATABASE.getElement(s));
+        }
+    }
 
     /*
     Getters and some setters or adders
