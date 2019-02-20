@@ -2,11 +2,10 @@ package objects;
 
 import java.util.ArrayList;
 
-//TODO make this class
-public class ProcessingTool {
-    ArrayList<Process> processes;
-    int chunkLocation;
-    String processToolName;
+public class ProcessingTool extends NamedThing {
+    private ArrayList<Process> processes;
+    private int chunkLocation;
+    private String processToolName;
 
     public ProcessingTool(ArrayList<Process> processes, int chunkLocation, String processToolName) {
         this.processes = processes;
