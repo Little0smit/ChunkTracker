@@ -13,10 +13,5 @@
     "name": "chicken",
     "combatLvl": 99,
     "drops":["feather"]
-  },
-  {
-    "name": "yew tree",
-    "combatLvl": 2,
-    "drops":[""]
   }
 ]
