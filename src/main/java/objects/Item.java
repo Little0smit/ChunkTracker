@@ -2,7 +2,7 @@ package objects;
 
 import java.util.ArrayList;
 //TODO create equipable class
-public class Item {
+public class Item extends NamedThing{
     private String name;
     private ArrayList<Integer> locations;
 
