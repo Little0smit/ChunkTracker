@@ -2,12 +2,9 @@
   {
     "chunkNumber": 1,
     "chunkName": "1",
-    "mobs": [
-      {
-        "name": "",
-        "combatLvl": 2,
-        "drops":[""]
-      }
+    "mobNames": [
+      "Mob name 1",
+      "Mob name 2"
     ],
     "skillingNodes": [],
     "groundItems": [
@@ -16,13 +13,9 @@
     "processingTools": [
       ""
     ],
-    "shops": [
-      {
-        "name": "Name",
-        "chunkLocation": [2000],
-        "stock":[""],
-        "questReqs": [""]
-      }
+    "shopNames": [
+      "Name 1",
+      "Name 2"
     ],
     "otherNotes": ""
   }
