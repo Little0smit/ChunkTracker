@@ -17,10 +17,15 @@ public class DataParser {
 	public static void parse (){
 		try {
 			parseFile("src/main/resources/Mobs.json", Constant.MOB_DATABASE, Mob[].class);
-			parseFile("src/main/resources/Chunks.json", Constant.CHUNK_DATABASE, Chunk[].class);
 			parseFile("src/main/resources/Shops.json", Constant.SHOP_DATABASE, Shop[].class);
 			parseFile("src/main/resources/Processes.json", Constant.PROCESS_DATABASE, Process[].class);
 			parseFile("src/main/resources/Quests.json", Constant.QUEST_DATABASE, Quest[].class);
+			parseFile("src/main/resources/Chunks.json", Constant.CHUNK_DATABASE, Chunk[].class);
+
+			for (Chunk chunk : Constant.CHUNK_DATABASE.getAllElements().toArray(new Chunk[Constant.CHUNK_DATABASE.getNoOfelements()])){
+				chunk.lateParse();
+			}
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
