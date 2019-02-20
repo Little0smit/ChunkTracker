@@ -2,6 +2,7 @@ package databases;
 
 import objects.NamedThing;
 
+import java.util.Collection;
 import java.util.HashMap;
 
 public class Database<T extends NamedThing> {
@@ -18,4 +19,7 @@ public class Database<T extends NamedThing> {
 
 	public void registerElement(T obj){ if(!database.containsKey(obj.getName())) database.put(obj.getName(), obj); }
 
+	public Collection<T> getAllElements(){ return database.values(); }
+
+	public int getNoOfelements(){ return database.size(); }
 }
