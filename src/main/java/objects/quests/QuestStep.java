@@ -1,7 +1,7 @@
 package objects.quests;
 
+import constants.Constant;
 import constants.Skills;
-import databases.UnlockedItemDatabase;
 import objects.Item;
 
 import java.util.ArrayList;
@@ -9,7 +9,7 @@ import java.util.EnumMap;
 
 public class QuestStep {
     private int stepNumber;
-    private String stepDescription;
+    private String stepDescription, extraInfo;
     private ArrayList<String> itemReqs;
     private int chunkLocation;
     private boolean completed;
@@ -42,8 +42,8 @@ public class QuestStep {
 
         //Check Items
         for (String item:itemReqs) {
-            if (UnlockedItemDatabase.contains(item)){
-                Item i = UnlockedItemDatabase.getItem(item);
+            if (Constant.UNLOCKED_ITEM_DATABASE.contains(item)){
+                Item i = Constant.UNLOCKED_ITEM_DATABASE.getElement(item);
                 if(!i.foundIn(unlockedChunks)) return false;
             } else {
                 return false;

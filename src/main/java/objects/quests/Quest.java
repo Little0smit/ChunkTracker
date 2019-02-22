@@ -1,15 +1,17 @@
 package objects.quests;
 
 import constants.Skills;
+import objects.NamedThing;
+import objects.SkillRequirements;
 
 import java.util.ArrayList;
 import java.util.EnumMap;
 
-public class Quest {
+public class Quest extends NamedThing {
     private String name;
     private ArrayList<QuestStep> steps;
     private int startingChunk;
-    private EnumMap<Skills, Integer> skillReqs;
+    private int[] skillReqs;
     private int questPointsReqs;
     private ArrayList<String> questReqs;
 
@@ -17,7 +19,7 @@ public class Quest {
     private boolean started;
     private boolean completed;
 
-    public Quest(String name, ArrayList<QuestStep> steps, int startingChunk, EnumMap<Skills, Integer> skillReqs, int questPointsReqs, ArrayList<String> questReqs) {
+    public Quest(String name, ArrayList<QuestStep> steps, int startingChunk, int[] skillReqs, int questPointsReqs, ArrayList<String> questReqs) {
         this.name = name;
         this.steps = steps;
         this.startingChunk = startingChunk;
@@ -33,14 +35,16 @@ public class Quest {
      */
     public boolean isCompletable(ArrayList<Integer> unlockedChunks, EnumMap<Skills, Integer> currentSkills, ArrayList<String> completedQuests, int questPoints){
         if (completed) return false;
-        
+
+        SkillRequirements sr = new SkillRequirements(skillReqs);
+
         //Check pre-quest requirements if it's not been started
         if(!started){
             //Check you have access to start
             if(!unlockedChunks.contains(startingChunk)) return false;
             //Check pre quest skill requirement
             for (Skills skill : Skills.values()) {
-                if(currentSkills.get(skill) < skillReqs.get(skill)) return false;
+                if(currentSkills.get(skill) < sr.getSkills().get(skill)) return false;
             }
             //Check pre quest completion requirements
             for (String s:questReqs){
@@ -53,11 +57,7 @@ public class Quest {
         //Check each step of the quest, returning true if first non completed step is completable.
         for(QuestStep s: steps){
             if(!s.isCompleted()){
-                if (s.completable(unlockedChunks, currentSkills)){
-                    return true;
-                } else {
-                    return false;
-                }
+                return s.completable(unlockedChunks, currentSkills);
             }
         }
         return false;
