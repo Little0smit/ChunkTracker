@@ -1,25 +1,25 @@
 package objects;
 
-import databases.ItemDatabase;
-import databases.ProcessingToolDB;
-import databases.UnlockedItemDatabase;
+import constants.Constant;
 
 import java.util.ArrayList;
 
-public class Chunk {
+public class Chunk extends NamedThing {
     private int chunkNumber;
     private String chunkName;
     private ArrayList<Mob> mobs;
     private ArrayList<SkillingNode> skillingNodes;
     private ArrayList<String> groundItems;
     private ArrayList<String> processingTools;
+    private ArrayList<String> mobNames; //Dummy field to remove the need for duplication in the JSON files
     private ArrayList<Shop> shops;
+    private ArrayList<String> shopNames;
     private int[] accessibleChunks; //0=N, 1=E, 2=S, 3=W
     private String otherNotes;
 
     //Constructors. One with everything, one with just chunk number and name (unsure if needed but made in case.
-    public Chunk(int chunkNumber, String chunkName, ArrayList<Mob> mobs, ArrayList<SkillingNode> skillingNodes,
-                 ArrayList<String> groundItems, ArrayList<String> processingTools, ArrayList<Shop> shops, int[] accessibleChunks) {
+    public Chunk(int chunkNumber, String chunkName, ArrayList<Mob> mobs, ArrayList<SkillingNode> skillingNodes, ArrayList<String> mobNames,
+                 ArrayList<String> groundItems, ArrayList<String> processingTools, ArrayList<Shop> shops, int[] accessibleChunks, ArrayList<String> shopNames) {
         this.chunkNumber = chunkNumber;
         this.chunkName = chunkName;
         this.mobs = mobs;
@@ -28,6 +28,8 @@ public class Chunk {
         this.processingTools = processingTools;
         this.shops = shops;
         this.accessibleChunks = accessibleChunks;
+        this.mobNames = mobNames;
+        this.shopNames = shopNames;
     }
 
     public Chunk(int chunkNumber, String chunkName) {
@@ -41,6 +43,17 @@ public class Chunk {
         accessibleChunks = new int[4];
     }
 
+    public void lateParse(){
+        for (String s : mobNames){
+            if (Constant.MOB_DATABASE.getElement(s) != null)
+                mobs.add(Constant.MOB_DATABASE.getElement(s));
+        }
+        for (String s : shopNames){
+            if (Constant.SHOP_DATABASE.getElement(s) != null)
+                shops.add(Constant.SHOP_DATABASE.getElement(s));
+        }
+    }
+
     /*
     Getters and some setters or adders
     **/
@@ -50,6 +63,11 @@ public class Chunk {
     }
 
     public String getChunkName() {
+        return chunkName;
+    }
+
+    @Override
+    public String getName(){
         return chunkName;
     }
 
@@ -117,20 +135,20 @@ public class Chunk {
     public void addItemsToDB() {
         //Ground Items
         for (String item : groundItems) {
-            UnlockedItemDatabase.addToDB(ItemDatabase.getItem(item));
+            Constant.UNLOCKED_ITEM_DATABASE.registerElement(Constant.ITEM_DATABASE.getElement(item));
         }
         //Shop Items
         for (Shop shop : shops) {
             ArrayList<String> stock = shop.getStock();
             for (String item : stock) {
-                UnlockedItemDatabase.addToDB(ItemDatabase.getItem(item));
+                Constant.UNLOCKED_ITEM_DATABASE.registerElement(Constant.ITEM_DATABASE.getElement(item));
             }
         }
         //objects.Mob Drops
         for (Mob mob : mobs) {
-            Item[] drops = mob.getDrops();
-            for (Item drop : drops) {
-                UnlockedItemDatabase.addToDB(drop);
+            ArrayList<String> drops = mob.getDrops();
+            for (String drop : drops) {
+                Constant.UNLOCKED_ITEM_DATABASE.registerElement(Constant.ITEM_DATABASE.getElement(drop));
             }
         }
         //Skilling Resources
@@ -139,23 +157,23 @@ public class Chunk {
             ArrayList<String> items = node.getOutputs();
             for (String item :
                     items) {
-                UnlockedItemDatabase.addToDB(ItemDatabase.getItem(item));
+                Constant.UNLOCKED_ITEM_DATABASE.registerElement(Constant.ITEM_DATABASE.getElement(item));
             }
         }
         //Skilling Processes
         for (String processingToolString : processingTools) {
-            ProcessingTool processingTool = ProcessingToolDB.getProcess(processingToolString);
+            ProcessingTool processingTool = Constant.PROCESSING_TOOL_DATABASE.getElement(processingToolString);
             for (Process process :
                     processingTool.getProcesses()) {
                 boolean gotInputs = true;
-                for (Item input :
+                for (String input :
                         process.getInputs()) {
-                    if (!UnlockedItemDatabase.contains(input)) gotInputs = false;
+                    if (!Constant.UNLOCKED_ITEM_DATABASE.contains(input)) gotInputs = false;
                 }
                 if (gotInputs) {
-                    for (Item output :
+                    for (String output :
                             process.getOutputs()) {
-                        UnlockedItemDatabase.addToDB(output);
+                        Constant.UNLOCKED_ITEM_DATABASE.registerElement(Constant.ITEM_DATABASE.getElement(output));
                     }
                 }
             }

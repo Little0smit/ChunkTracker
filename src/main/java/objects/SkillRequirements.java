@@ -1,17 +1,25 @@
 package objects;
 
+import constants.Constant;
 import constants.Skills;
 
 import java.util.EnumMap;
 
 //Wrapper class for skill requirements
 public class SkillRequirements {
-	EnumMap<Skills, Integer> skills;
+	private EnumMap<Skills, Integer> skills;
 
 	public SkillRequirements (){
 		skills = new EnumMap<Skills, Integer>(Skills.class);
 		for (Skills skill : Skills.values()){
 			skills.put(skill, 1);
+		}
+	}
+
+	public SkillRequirements (int[] skillz){
+		skills = new EnumMap<Skills, Integer>(Skills.class);
+		for (int i = 0; i < skillz.length; i++){
+			skills.put(Skills.valueOf(Constant.ORDER_OF_STRINGS[i]), skillz[i]);
 		}
 	}
 
@@ -32,5 +40,15 @@ public class SkillRequirements {
 			if(currentSkills.get(skill) < skills.get(skill)) return false;
 		}
 		return true;
+	}
+
+	public int[] toIntArr(){
+		int[] arr = new int[Constant.NUMBER_OF_SKILLS];
+
+		for (int i = 0; i < Constant.NUMBER_OF_SKILLS; i++){
+			arr[i] = skills.get(Skills.valueOf(Constant.ORDER_OF_STRINGS[i]));
+		}
+
+		return arr;
 	}
 }

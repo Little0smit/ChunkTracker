@@ -1,16 +1,19 @@
 package objects;
 
-public class Mob {
+import java.util.ArrayList;
+
+public class Mob extends NamedThing {
     String name;
     int combatLvl;
-    Item[] drops;
+    ArrayList<String> drops;
 
-    public Mob(String name, int combatLvl, Item[] drops) {
+    public Mob(String name, int combatLvl, ArrayList<String> drops) {
         this.name = name;
         this.combatLvl = combatLvl;
         this.drops = drops;
     }
 
+    @Override
     public String getName() {
         return name;
     }
@@ -19,7 +22,7 @@ public class Mob {
         return combatLvl;
     }
 
-    public Item[] getDrops() {
+    public ArrayList<String> getDrops() {
         return drops;
     }
 }
