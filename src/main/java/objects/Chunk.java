@@ -1,8 +1,10 @@
 package objects;
 
 import constants.Constant;
+import constants.Skills;
 
 import java.util.ArrayList;
+import java.util.EnumMap;
 
 public class Chunk extends NamedThing {
     private int chunkNumber;
@@ -132,6 +134,8 @@ public class Chunk extends NamedThing {
     /**
      * Adds all accessible items withing the chunk to the unlocked item's database .
      */
+    //TODO: check if items are accesible with current quests/stats/items
+    //For example, the cooking apples in the cooking guild are only accessible with 32 cooking and a Chef's hat
     public void addItemsToDB() {
         //Ground Items
         for (String item : groundItems) {
@@ -178,6 +182,36 @@ public class Chunk extends NamedThing {
                 }
             }
         }
+    }
+
+    public EnumMap<Skills, Integer> getSkillReqs(Player player){
+        //Check if skill is trainable, otherwise the required skill is 1
+        EnumMap<Skills, Integer> reqs = new EnumMap<Skills, Integer>(Skills.class);
+        for (Skills skill : Skills.values()) {
+            reqs.put(skill, 0);
+        }
+
+        for (Skills skill : Skills.values()){
+            if (player.isTrainable(skill)){
+                for (String processTool : processingTools){
+                    for (Process process :Constant.PROCESSING_TOOL_DATABASE.getElement(processTool).getProcesses()){
+                        for (String input : process.getInputs()){
+                            if (Constant.UNLOCKED_ITEM_DATABASE.contains(Constant.ITEM_DATABASE.getElement(input))){
+                                if (reqs.get(skill) != null){
+                                    if (reqs.get(skill) < process.getLevelRequirement()){
+                                        reqs.put(skill, process.getLevelRequirement());
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            } else {
+                reqs.put(skill, 1);
+            }
+        }
+
+        return reqs;
     }
 
     /*
