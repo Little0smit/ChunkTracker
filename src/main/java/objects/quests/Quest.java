@@ -82,4 +82,14 @@ public class Quest extends NamedThing {
     public String getName(){
         return name;
     }
+
+    public ArrayList<QuestStep> getSteps() { return steps; }
+
+    public int getStartingChunk() { return startingChunk; }
+
+    public int[] getSkillReqs() { return skillReqs; }
+
+    public int getQuestPointsReqs() { return questPointsReqs; }
+
+    public ArrayList<String> getQuestReqs() { return questReqs; }
 }
