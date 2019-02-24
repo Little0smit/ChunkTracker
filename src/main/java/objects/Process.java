@@ -8,7 +8,7 @@ public class Process extends NamedThing {
     private ArrayList<String> inputs, outputs, questRequirements;
     private Skills skillType;
     private String processName, processingToolName;
-    int levelRequirement;
+    private int levelRequirement;
 
     public Process(ArrayList<String> inputs, ArrayList<String> outputs, ArrayList<String> questRequirements, Skills skillType, String processName) {
         this.inputs = inputs;
@@ -18,21 +18,18 @@ public class Process extends NamedThing {
         this.processName = processName;
     }
 
-    public ArrayList<String> getInputs() {
-        return inputs;
-    }
+    public ArrayList<String> getInputs() { return inputs; }
 
-    public ArrayList<String> getOutputs() {
-        return outputs;
-    }
+    public ArrayList<String> getOutputs() { return outputs; }
 
-    public ArrayList<String> getQuestRequirements() {
-        return questRequirements;
-    }
+    public ArrayList<String> getQuestRequirements() { return questRequirements; }
 
-    public Skills getSkillType() {
-        return skillType;
-    }
+    public Skills getSkillType() { return skillType; }
+
 
     public String getName() { return processName; }
+
+    public String getProcessingToolName() { return processingToolName; }
+
+    public int getLevelRequirement() { return levelRequirement; }
 }
