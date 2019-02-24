@@ -127,5 +127,108 @@
       ],
       "questPointsReqs":0,
       "questPointsReward":1
-   }
+   },
+   {
+      "name":"Demon Slayer",
+      "steps":[
+         {
+            "stepNumber":1,
+            "stepDescription":"Talk to Gypsy",
+            "chunkLocation":12853,
+            "itemReqs":[
+               {
+                  "itemName":"Coins",
+                  "itemQuantity":1
+               }
+            ],
+            "extraInfo":"Start of quest. Take not of Wally's incantation."
+         },
+         {
+            "stepNumber":2,
+            "stepDescription":"Talk to Sir Prysin",
+            "chunkLocation":12854,
+            "extraInfo":"In the South-West room of Varrock Castle. Ask for Silverlight."
+         },
+         {
+            "stepNumber":3,
+            "stepDescription":"Talk to Captian Rovin",
+            "chunkLocation":12854,
+            "extraInfo":"2nd floor of Varrock Castle, on the North-West side."
+         },
+         {
+            "stepNumber":4,
+            "stepDescription":"Talk to Wizard Traiborn",
+            "chunkLocation":12337,
+            "itemReqs":[
+               {
+                  "itemName":"Bones",
+                  "itemQuantity":25
+               }
+            ],
+            "extraInfo":"1st floor of the Wizards' Tower."
+         },
+         {
+            "stepNumber":5,
+            "stepDescription":"Flush drain",
+            "chunkLocation":12854,
+            "itemReqs":[
+               {
+                  "itemName":"Bucket of water",
+                  "itemQuantity":1
+               }
+            ],
+            "extraInfo":"Use the water on a drain North of the Varrock Castle kitchen."
+         },
+         {
+            "stepNumber":6,
+            "stepDescription":"Find sewer key",
+            "chunkLocation":12854,
+            "extraInfo":"Head West then North in the sewer. Look for a rusty key."
+         },
+         {
+            "stepNumber":7,
+            "stepDescription":"Return to Sir Prysin",
+            "chunkLocation":12854,
+            "extraInfo":"Acquire and equip Silverlight"
+         },
+         {
+            "stepNumber":8,
+            "stepDescription":"Defeat Delrith",
+            "chunkLocation":12852,
+            "extraInfo":"Attack with Silverlight. When Delrith hits 0HP, use the incantation noted in Step 1. End of quest."
+         }
+      ],
+      "startingChunk":12853,
+      "questReqs":[
+         ""
+      ],
+      "skillReqs":[
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0
+      ],
+      "questPointsReqs":0,
+      "questPointsReward":3
+   },
+
 ]
