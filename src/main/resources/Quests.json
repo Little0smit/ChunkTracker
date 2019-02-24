@@ -1,17 +1,131 @@
 [
-  {
-    "name": "Quest Name",
-    "steps": [
-      {"stepNumber": 1,
-        "stepDescription": "",
-        "itemReqs": [""],
-        "chunkLocation": 2000,
-        "extraInfo": "Any extra info about step"
-      }
-    ],
-    "startingChunk": 2000,
-    "questReqs":[""],
-    "skillReqs":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-    "questPointsReqs":0
-  }
+   {
+      "name":"Quest Name",
+      "steps":[
+         {
+            "stepNumber":1,
+            "stepDescription":"",
+            "itemReqs":[
+               {
+                  "itemName":"",
+                  "itemQuantity":1
+               }
+            ],
+            "chunkLocation":0,
+            "extraInfo":""
+         }
+      ],
+      "startingChunk":2000,
+      "questReqs":[
+         ""
+      ],
+      "skillReqs":[
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0
+      ],
+      "questPointsReqs":0,
+      "questPointsReward":1
+   },
+   {
+      "name":"Cook's Assistant",
+      "steps":[
+         {
+            "stepNumber":1,
+            "stepDescription":"Talk to Cook",
+            "chunkLocation":12850,
+            "extraInfo":"Start of quest."
+         },
+         {
+            "stepNumber":2,
+            "stepDescription":"Hand in Pot of flour",
+            "itemReqs":[
+               {
+                  "itemName":"Pot of flour",
+                  "itemQuantity":1
+               }
+            ],
+            "extraInfo":""
+         },
+         {
+            "stepNumber":3,
+            "stepDescription":"Hand in Egg",
+            "itemReqs":[
+               {
+                  "itemName":"Egg",
+                  "itemQuantity":1
+               }
+            ],
+            "extraInfo":""
+         },
+         {
+            "stepNumber":4,
+            "stepDescription":"Hand in Bucket of milk",
+            "itemReqs":[
+               {
+                  "itemName":"Bucket of milk",
+                  "itemQuantity":1
+               }
+            ],
+            "extraInfo":""
+         },
+         {
+            "stepNumber":5,
+            "stepDescription":"Speak to Cook",
+            "chunkLocation":12850,
+            "extraInfo":"End of quest."
+         }
+      ],
+      "startingChunk":12850,
+      "questReqs":[
+         ""
+      ],
+      "skillReqs":[
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0
+      ],
+      "questPointsReqs":0,
+      "questPointsReward":1
+   }
 ]
