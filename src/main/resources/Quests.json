@@ -230,5 +230,70 @@
       "questPointsReqs":0,
       "questPointsReward":3
    },
-
+   {
+      "name":"The Restless Ghost",
+      "steps":[
+         {
+            "stepNumber":1,
+            "stepDescription":"Talk to Father Aereck",
+            "chunkLocation":12850,
+            "extraInfo":"Start of quest. In Lumbridge chapel."
+         },
+         {
+            "stepNumber":2,
+            "stepDescription":"Talk to Father Urhney",
+            "chunkLocation":12593,
+            "extraInfo":"In a small house on the West side of Lumbridge Swamp."
+         }
+         {
+            "stepNumber":3,
+            "stepDescription":"Search the coffin",
+            "chunkLocation":12849,
+            "extraInfo":"Wear your Amulet of ghostspeak to talk to the ghost."
+         }
+         {
+            "stepNumber":4,
+            "stepDescription":"Retrieve the skull from the Wizard's Tower",
+            "chunkLocation":12337,
+            "extraInfo":"Take the skull from the altar under the Tower. A skeleton spawns that you can kill or run from."
+         }
+         {
+            "stepNumber":4,
+            "stepDescription":"Return the skull to the ghost",
+            "chunkLocation":12849,
+            "extraInfo":"Talk to the ghost, then use the skull on the coffin. End of quest."
+         }
+      ],
+      "startingChunk":12850,
+      "questReqs":[
+         ""
+      ],
+      "skillReqs":[
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0
+      ],
+      "questPointsReqs":0,
+      "questPointsReward":1
+   },
 ]
