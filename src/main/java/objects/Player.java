@@ -1,9 +1,9 @@
 package objects;
 
-import com.sun.org.apache.xpath.internal.operations.Bool;
 import constants.Constant;
+import constants.EquipmentSlot;
 import constants.Skills;
-import objects.quests.Quest;
+import constants.WeaponType;
 
 import java.util.ArrayList;
 import java.util.EnumMap;
@@ -26,8 +26,7 @@ public class Player {
         currentStats.put(Skills.Hitpoints, 10);
 
         //If there are enemies in the starting chunk, then the melee skills are trainable
-        if (Constant.CHUNK_DATABASE.getElement(
-                Integer.toString(startingChunk)).getMobs().size() != 0){
+        if (Constant.CHUNK_DATABASE.getElement(Integer.toString(startingChunk)).getMobs().size() != 0){
             trainableStats.put(Skills.Attack, true);
             trainableStats.put(Skills.Defence, true);
             trainableStats.put(Skills.Strength, true);
@@ -77,7 +76,7 @@ public class Player {
         }
     }
 
-    public boolean canRollChunk(){
+    /*public boolean canRollChunk(){
         for (int chunk : unlockedChunks){
             //Check if all quests that are completable are completed
             for (Quest quest : Constant.QUEST_DATABASE.getAllElements()){
@@ -93,7 +92,7 @@ public class Player {
         }
 
         return true;
-    }
+    }*/
 
     public EnumMap<Skills, Integer> skillsToNextChunk (){
         EnumMap<Skills, Integer> out = new EnumMap<Skills, Integer>(Skills.class);
@@ -109,5 +108,44 @@ public class Player {
         }
 
         return out;
+    }
+
+    public EnumMap<WeaponType, EnumMap<EquipmentSlot, EquippableItem[]>> BiSItems(){
+        EnumMap<WeaponType, EnumMap<EquipmentSlot, EquippableItem[]>> p = new EnumMap<WeaponType, EnumMap<EquipmentSlot, EquippableItem[]>>(WeaponType.class);
+
+        for (WeaponType type : WeaponType.values()) {
+            EnumMap<EquipmentSlot, EquippableItem[]> BiS = new EnumMap<EquipmentSlot, EquippableItem[]>(EquipmentSlot.class);
+            for (EquipmentSlot slot : EquipmentSlot.values()) {
+                BiS.put(slot, null);
+            }
+
+            for (EquipmentSlot slot : EquipmentSlot.values()) {
+                ArrayList<EquippableItem> BiSArr = new ArrayList<EquippableItem>();
+                for (Item item : Constant.UNLOCKED_ITEM_DATABASE.getAllElements()) {
+                    if (Constant.EQUIPPABLE_ITEM_DATABASE.contains(item.getName())) {
+                        EquippableItem eItem = Constant.EQUIPPABLE_ITEM_DATABASE.getElement(item.getName());
+                        try {
+                            if (eItem.getSlot() == slot) {
+                                if (BiSArr.size() == 0) {
+                                    BiSArr.add(eItem);
+                                } else if (BiSArr.get(0).getBiSNumber() < eItem.getBiSNumber()) {
+                                    BiSArr.clear();
+                                    BiSArr.add(eItem);
+                                } else if (BiSArr.get(0).getBiSNumber() == eItem.getBiSNumber()) {
+                                    BiSArr.add(eItem);
+                                }
+                            }
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+                BiS.put(slot, BiSArr.toArray(new EquippableItem[BiSArr.size()]));
+            }
+
+            p.put(type, BiS);
+        }
+
+        return p;
     }
 }
