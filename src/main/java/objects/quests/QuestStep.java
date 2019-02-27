@@ -3,6 +3,7 @@ package objects.quests;
 import constants.Constant;
 import constants.Skills;
 import objects.Item;
+import objects.ItemStack;
 
 import java.util.ArrayList;
 import java.util.EnumMap;
@@ -10,16 +11,16 @@ import java.util.EnumMap;
 public class QuestStep {
     private int stepNumber;
     private String stepDescription, extraInfo;
-    private ArrayList<String> itemReqs;
+    private ArrayList<ItemStack> itemReqs = new ArrayList<ItemStack>();
     private int chunkLocation;
     private boolean completed;
 
-    public QuestStep(int stepNumber, String stepDescription, ArrayList<String> itemReqs, int chunkLocation) {
+    /*public QuestStep(int stepNumber, String stepDescription, ArrayList<String> itemReqs, int chunkLocation) {
         this.stepNumber = stepNumber;
         this.stepDescription = stepDescription;
         this.itemReqs = itemReqs;
         this.chunkLocation = chunkLocation;
-    }
+    }*/
 
     public int getStepNumber() {
         return stepNumber;
@@ -29,7 +30,7 @@ public class QuestStep {
         return stepDescription;
     }
 
-    public ArrayList<String> getItemReqs() {
+    public ArrayList<ItemStack> getItemReqs() {
         return itemReqs;
     }
 
@@ -41,10 +42,9 @@ public class QuestStep {
         if(!unlockedChunks.contains(chunkLocation)) return false;
 
         //Check Items
-        for (String item:itemReqs) {
-            if (Constant.UNLOCKED_ITEM_DATABASE.contains(item)){
-                Item i = Constant.UNLOCKED_ITEM_DATABASE.getElement(item);
-                if(!i.foundIn(unlockedChunks)) return false;
+        for (ItemStack item:itemReqs) {
+            if (Constant.UNLOCKED_ITEM_DATABASE.contains(item.getItemName())){
+                if(Constant.UNLOCKED_ITEM_DATABASE.contains(item.getItemName())) return false;
             } else {
                 return false;
             }
