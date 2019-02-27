@@ -3,11 +3,8 @@ package JSON;
 import com.google.gson.Gson;
 import constants.Constant;
 import databases.Database;
-import objects.Chunk;
-import objects.Mob;
-import objects.NamedThing;
+import objects.*;
 import objects.Process;
-import objects.Shop;
 import objects.quests.Quest;
 
 import java.io.*;
@@ -21,11 +18,12 @@ public class DataParser {
 			parseFile("src/main/resources/Processes.json", Constant.PROCESS_DATABASE, Process[].class);
 			parseFile("src/main/resources/Quests.json", Constant.QUEST_DATABASE, Quest[].class);
 			parseFile("src/main/resources/Chunks.json", Constant.CHUNK_DATABASE, Chunk[].class);
+			parseFile("src/main/resources/ProcessingTools.json", Constant.PROCESSING_TOOL_DATABASE, ProcessingTool[].class);
+			parseFile("src/main/resources/EquippableItems.json", Constant.EQUIPPABLE_ITEM_DATABASE, EquippableItem[].class);
 
-			for (Chunk chunk : Constant.CHUNK_DATABASE.getAllElements().toArray(new Chunk[Constant.CHUNK_DATABASE.getNoOfelements()])){
-				chunk.lateParse();
+			for (Chunk chunk : Constant.CHUNK_DATABASE.getAllElements()){
+				chunk.addItemsToDB();
 			}
-
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
