@@ -12,9 +12,8 @@ public class Quest extends NamedThing {
     private ArrayList<QuestStep> steps;
     private int startingChunk;
     private int[] skillReqs;
-    private int questPointsReqs;
+    private int questPointsReqs, questPointsReward;
     private ArrayList<String> questReqs;
-
 
     private boolean started;
     private boolean completed;
