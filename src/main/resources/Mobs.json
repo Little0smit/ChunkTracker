@@ -1,11 +1,11 @@
 [
   {
-    "name": "Goblin",
+    "name": "goblin",
     "combatLvl": 2,
     "drops":["bar", "foo"]
   },
   {
-    "name": "Imp",
+    "name": "imp",
     "combatLvl": 33,
     "drops":["flour", "bucket"]
   },
