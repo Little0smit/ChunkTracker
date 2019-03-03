@@ -2,6 +2,8 @@ package constants;
 
 //This enum contains a list of the different types
 //of skilling nodes
+
+//This class might be redundant
 public enum SkillingNodeType {
 	//Maybe do something special for motherlode mine?
 	CLAY, ESSENCE, COPPER_ORE, TIN_ORE, LIMESTONE, BLURITE_ORE, IRON_ORE,
