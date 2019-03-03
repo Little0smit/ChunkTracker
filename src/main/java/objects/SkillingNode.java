@@ -2,6 +2,7 @@ package objects;
 
 import constants.SkillingNodeType;
 import constants.Skills;
+import objects.requirements.SkillRequirements;
 
 import java.util.ArrayList;
 

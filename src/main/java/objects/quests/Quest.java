@@ -2,7 +2,7 @@ package objects.quests;
 
 import constants.Skills;
 import objects.NamedThing;
-import objects.SkillRequirements;
+import objects.requirements.SkillRequirements;
 
 import java.util.ArrayList;
 import java.util.EnumMap;
