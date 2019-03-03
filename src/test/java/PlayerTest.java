@@ -1,7 +1,5 @@
-import constants.Constant;
 import constants.Skills;
 import objects.Player;
-import objects.SkillingNode;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
