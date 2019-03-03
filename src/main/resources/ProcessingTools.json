@@ -3,7 +3,7 @@
     "processToolName": "furnace",
     "processesNames": [
       "ironSmelting",
-      "BronzeSmelting",
+      "bronzeSmelting",
       "goldSmelting"
     ]
   }
