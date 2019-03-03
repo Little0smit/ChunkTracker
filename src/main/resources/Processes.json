@@ -1,11 +1,29 @@
 [
   {
-    "skillType": "Attack",
-    "levelRequirement": 0,
-    "inputs": ["Item"],
-    "processingToolName": "",
-    "outputs": ["Item"],
-    "questRequirements": ["none"],
-    "processName": "Process Name"
+    "skillType": "Smithing",
+    "levelRequirement": 1,
+    "inputs": ["tinOre","copperOre"],
+    "processingToolName": "furnace",
+    "outputs": ["bronzeBar"],
+    "questRequirements": [],
+    "processName": "bronzeSmelting"
+  },
+  {
+    "skillType": "Smithing",
+    "levelRequirement": 15,
+    "inputs": ["ironOre"],
+    "processingToolName": "furnace",
+    "outputs": ["ironBar"],
+    "questRequirements": [],
+    "processName": "ironSmelting"
+  },
+  {
+    "skillType": "Smithing",
+    "levelRequirement": 40,
+    "inputs": ["goldOre"],
+    "processingToolName": "furnace",
+    "outputs": ["goldBar"],
+    "questRequirements": [],
+    "processName": "goldSmelting"
   }
 ]
