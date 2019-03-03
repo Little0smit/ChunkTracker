@@ -13,25 +13,32 @@ public class Quest extends NamedThing {
     private int startingChunk;
     private int[] skillReqs;
     private int questPointsReqs;
+    private int questPointsReward;
     private ArrayList<String> questReqs;
 
 
     private boolean started;
     private boolean completed;
 
-    public Quest(String name, ArrayList<QuestStep> steps, int startingChunk, int[] skillReqs, int questPointsReqs, ArrayList<String> questReqs) {
+    public Quest(String name, ArrayList<QuestStep> steps, int startingChunk, int[] skillReqs, int questPointsReqs, int questPointsReward, ArrayList<String> questReqs) {
         this.name = name;
         this.steps = steps;
         this.startingChunk = startingChunk;
         this.skillReqs = skillReqs;
         this.questPointsReqs = questPointsReqs;
+        this.questPointsReward = questPointsReward;
         this.questReqs = questReqs;
         completed = false;
         started = false;
     }
 
     /**
-     * Returns true if the quest if partially completable with current chunks unlocked.
+     * Checks to see if the next step of the quest is completable.
+     * @param unlockedChunks ArrayList of accessible chunks to the player, in ints.
+     * @param currentSkills EnumMap of the current stats the player has.
+     * @param completedQuests ArrayList of the quests the player has already completed, in Strings.
+     * @param questPoints The current quest point count the player is at, in int.
+     * @return Boolean whether the next step is completable, False if completed or not possible to start.
      */
     public boolean isCompletable(ArrayList<Integer> unlockedChunks, EnumMap<Skills, Integer> currentSkills, ArrayList<String> completedQuests, int questPoints){
         if (completed) return false;
@@ -81,5 +88,13 @@ public class Quest extends NamedThing {
     
     public String getName(){
         return name;
+    }
+
+    /**
+     * Gets the number of quest points rewarded for completing the quest
+     * @return int the quest points awarded on completion.
+     */
+    public int getQuestPointsReward(){
+        return questPointsReward;
     }
 }
