@@ -9,9 +9,8 @@ import java.util.EnumMap;
 public class Chunk extends NamedThing {
     private int chunkNumber;
     private String chunkName;
-    private ArrayList<SkillingNode> skillingNodes = new ArrayList<SkillingNode>();
     private ArrayList<String> groundItems = new ArrayList<String>();
-    private ArrayList<String> processingTools = new ArrayList<String>();
+    private ArrayList<String> skillingLocations = new ArrayList<String>();
     private ArrayList<String> mobs = new ArrayList<String>();
     private ArrayList<String> shops = new ArrayList<String>();
     private int[] accessibleChunks; //0=N, 1=E, 2=S, 3=W
@@ -22,11 +21,9 @@ public class Chunk extends NamedThing {
     @Override
     public String getName() { return chunkName; }
 
-    public ArrayList<SkillingNode> getSkillingNodes() { return skillingNodes; }
-
     public ArrayList<String> getGroundItems() { return groundItems; }
 
-    public ArrayList<String> getProcessingTools() { return processingTools; }
+    public ArrayList<String> getSkillingLocations() { return skillingLocations; }
 
     public ArrayList<String> getMobs() { return mobs; }
 
@@ -63,17 +60,8 @@ public class Chunk extends NamedThing {
                 Constant.UNLOCKED_ITEM_DATABASE.registerElement(Constant.ITEM_DATABASE.getElement(drop));
             }
         }
-        //Skilling Resources
-        for (SkillingNode node :
-                skillingNodes) {
-            ArrayList<String> items = node.getOutputs();
-            for (String item : items) {
-                Constant.ITEM_DATABASE.registerElement(new Item(item));
-                Constant.UNLOCKED_ITEM_DATABASE.registerElement(Constant.ITEM_DATABASE.getElement(item));
-            }
-        }
-        //Skilling Processes
-        for (String processingToolString : processingTools) {
+        //Skilling Locations
+        for (String processingToolString : skillingLocations) {
             ProcessingTool processingTool = Constant.PROCESSING_TOOL_DATABASE.getElement(processingToolString);
             for (Process process :
                     processingTool.getProcesses()) {
@@ -85,6 +73,7 @@ public class Chunk extends NamedThing {
                 if (gotInputs) {
                     for (String output :
                             process.getOutputs()) {
+                        Constant.ITEM_DATABASE.registerElement(new Item(output));
                         Constant.UNLOCKED_ITEM_DATABASE.registerElement(Constant.ITEM_DATABASE.getElement(output));
                     }
                 }
@@ -101,9 +90,8 @@ public class Chunk extends NamedThing {
 
         for (Skills skill : Skills.values()){
             if (player.isTrainable(skill)){
-                for (String processTool : processingTools){
-                    for (Process process : Constant.PROCESSING_TOOL_DATABASE.getElement(processTool)
-                            .getProcesses()){
+                for (String processTool : skillingLocations){
+                    for (Process process : Constant.PROCESSING_TOOL_DATABASE.getElement(processTool).getProcesses()){
                         for (String input : process.getInputs()){
                             if (Constant.UNLOCKED_ITEM_DATABASE.contains(Constant.ITEM_DATABASE.getElement(input))){
                                 if (reqs.get(skill) != null){
