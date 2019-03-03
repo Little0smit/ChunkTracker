@@ -1,5 +1,6 @@
 package objects;
 
+import constants.Constant;
 import constants.Skills;
 
 import java.util.ArrayList;
@@ -9,14 +10,6 @@ public class Process extends NamedThing {
     private Skills skillType;
     private String processName, processingToolName;
     private int levelRequirement;
-
-    public Process(ArrayList<String> inputs, ArrayList<String> outputs, ArrayList<String> questRequirements, Skills skillType, String processName) {
-        this.inputs = inputs;
-        this.outputs = outputs;
-        this.questRequirements = questRequirements;
-        this.skillType = skillType;
-        this.processName = processName;
-    }
 
     public ArrayList<String> getInputs() { return inputs; }
 
@@ -32,4 +25,19 @@ public class Process extends NamedThing {
     public String getProcessingToolName() { return processingToolName; }
 
     public int getLevelRequirement() { return levelRequirement; }
+
+    public boolean isDoable(Player player){
+        for (String input : inputs){
+            if(!Constant.UNLOCKED_ITEM_DATABASE.contains(input)) return false;
+        }
+        //if(!Constant.UNLOCKED_ITEM_DATABASE.contains(processingToolName)) return false;
+        if (questRequirements.size() != 0) {
+            for (String questReqs : questRequirements) {
+                if (!player.getCompletedQuests().contains(questReqs)) return false;
+            }
+        }
+        if (player.getCurrentSkillLvl(skillType) < levelRequirement) return false;
+
+        return true;
+    }
 }
