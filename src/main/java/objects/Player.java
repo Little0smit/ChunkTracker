@@ -25,13 +25,37 @@ public class Player {
         }
         currentStats.put(Skills.Hitpoints, 10);
 
-        //If there are enemies in the starting chunk, then the melee skills are trainable
-        if (Constant.CHUNK_DATABASE.getElement(Integer.toString(startingChunk)).getMobs().size() != 0){
-            trainableStats.put(Skills.Attack, true);
-            trainableStats.put(Skills.Defence, true);
-            trainableStats.put(Skills.Strength, true);
-            trainableStats.put(Skills.Hitpoints, true);
+        checkTrainableSkills();
+    }
+
+    public Player(ArrayList<Integer> unlockedChunks){
+        this.unlockedChunks = unlockedChunks;
+
+        currentStats = new EnumMap<Skills, Integer>(Skills.class);
+        trainableStats = new EnumMap<Skills, Boolean>(Skills.class);
+        for (Skills skill : Skills.values()) {
+            currentStats.put(skill, 1);
+            trainableStats.put(skill, false);
         }
+        currentStats.put(Skills.Hitpoints, 10);
+
+        checkTrainableSkills();
+    }
+
+    public Player(int[] unlockedChunks){
+        for (int i : unlockedChunks){
+            this.unlockedChunks.add(i);
+        }
+
+        currentStats = new EnumMap<Skills, Integer>(Skills.class);
+        trainableStats = new EnumMap<Skills, Boolean>(Skills.class);
+        for (Skills skill : Skills.values()) {
+            currentStats.put(skill, 1);
+            trainableStats.put(skill, false);
+        }
+        currentStats.put(Skills.Hitpoints, 10);
+
+        checkTrainableSkills();
     }
 
     public EnumMap<Skills, Integer> getCurrentStats() {
@@ -94,7 +118,58 @@ public class Player {
         return true;
     }*/
 
+    public void checkTrainableSkills(){
+        for (int chunk : unlockedChunks) {
+            //Combat skills
+            if (Constant.CHUNK_DATABASE.getElement(Integer.toString(chunk)).getMobs().size() != 0) {
+                trainableStats.put(Skills.Attack, true);
+                trainableStats.put(Skills.Defence, true);
+                trainableStats.put(Skills.Strength, true);
+                trainableStats.put(Skills.Hitpoints, true);
+                //Assuming bone drops are 100%
+                //Some mobs might drop bones, but not all the time, making bones a secondary item
+                //which means prayer only has secondary training methods
+                for (String mob : Constant.CHUNK_DATABASE.getElement(Integer.toString(chunk)).getMobs()){
+                    //TODO: Make a better list of all bones/items that give prayer XP
+                    for (String bone : new String[]{"bones", "bigBones", "dragonBones"})
+                    if (Constant.MOB_DATABASE.getElement(mob).drops.contains(bone)){
+                        trainableStats.put(Skills.Prayer, true);
+                    }
+                }
+            }
+
+            //TODO: Make the check for ranged training availability better
+            for (String arrow : new String[]{"bronzeArrow", "ironArrow"}){
+                for (String bow : new String[]{"shortbow", "oakShortbow"}) {
+                    if (Constant.UNLOCKED_ITEM_DATABASE.contains(arrow) && Constant.UNLOCKED_ITEM_DATABASE.contains(bow)) {
+                        trainableStats.put(Skills.Ranged, true);
+                    }
+                }
+            }
+
+            //TODO: Add better checking for rune availability, through 100% drops and rune shops
+            for (String shopName : Constant.CHUNK_DATABASE.getElement(Integer.toString(chunk)).getShops()){
+                for (String item : Constant.SHOP_DATABASE.getElement(shopName).getStock()){
+                    if (item == "mindRune"){
+                        trainableStats.put(Skills.Magic, true);
+                    }
+                }
+            }
+
+
+            //Can every non-combat skill be classified as a process, sometimes without inputs/outputs or both?
+            for (String skillingLocations : Constant.CHUNK_DATABASE.getElement(Integer.toString(chunk)).getSkillingLocations()){
+                for (String process : Constant.PROCESSING_TOOL_DATABASE.getElement(skillingLocations).getProcessesNames()){
+                    if (Constant.PROCESS_DATABASE.getElement(process).isDoable(this)){
+                        trainableStats.put(Constant.PROCESS_DATABASE.getElement(process).getSkillType(), true);
+                    }
+                }
+            }
+        }
+    }
+
     public EnumMap<Skills, Integer> skillsToNextChunk (){
+        //TODO: loop through skilling nodes to determine levels instead of looking at the chunks
         EnumMap<Skills, Integer> out = new EnumMap<Skills, Integer>(Skills.class);
         for (Skills skill : Skills.values()) {
             out.put(skill, 0);
