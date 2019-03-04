@@ -1,7 +1,6 @@
 package objects;
 
 import constants.*;
-import constants.WeaponType;
 
 import java.util.ArrayList;
 import java.util.EnumMap;
