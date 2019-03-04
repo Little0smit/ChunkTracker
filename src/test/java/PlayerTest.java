@@ -1,7 +1,5 @@
-import constants.Constant;
 import constants.Skills;
 import objects.Player;
-import objects.SkillingNode;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
@@ -14,7 +12,7 @@ public class PlayerTest {
 
     @Before
     public void setUp() throws Exception {
-        p = new Player();
+        p = new Player(0);
     }
 
     @After

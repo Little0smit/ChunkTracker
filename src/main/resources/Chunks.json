@@ -2,20 +2,20 @@
   {
     "chunkNumber": 1,
     "chunkName": "1",
-    "mobNames": [
-      "Mob name 1",
-      "Mob name 2"
+    "mobs": [
+      "Chicken",
+      "Goblin"
     ],
     "skillingNodes": [],
     "groundItems": [
-      ""
+      "mithrilSword"
     ],
-    "processingTools": [
-      ""
+    "skillingLocations": [
+      "furnace"
     ],
-    "shopNames": [
-      "Name 1",
-      "Name 2"
+    "shops": [
+      "bobsAxes",
+      "generalStoreLumbrige"
     ],
     "otherNotes": ""
   }

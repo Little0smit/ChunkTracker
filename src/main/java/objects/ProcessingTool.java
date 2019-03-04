@@ -1,27 +1,23 @@
 package objects;
 
+import constants.Constant;
+
 import java.util.ArrayList;
 
 public class ProcessingTool extends NamedThing {
-    private ArrayList<Process> processes;
-    private int chunkLocation;
-    private String processToolName;
+    //TODO: Rename to SkillingLocation
+    private String processToolName = "";
+    private ArrayList<String> processesNames = new ArrayList<String>();
 
-    public ProcessingTool(ArrayList<Process> processes, int chunkLocation, String processToolName) {
-        this.processes = processes;
-        this.chunkLocation = chunkLocation;
-        this.processToolName = processToolName;
-    }
+    public String getName() { return processToolName; }
 
-    public ArrayList<Process> getProcesses() {
+    public ArrayList<String> getProcessesNames() { return processesNames; }
+
+    public ArrayList<Process> getProcesses(){
+        ArrayList<Process> processes = new ArrayList<Process>();
+        for (String string : processesNames){
+            processes.add(Constant.PROCESS_DATABASE.getElement(string));
+        }
         return processes;
-    }
-
-    public int getChunkLocation() {
-        return chunkLocation;
-    }
-
-    public String getProcessName() {
-        return processToolName;
     }
 }

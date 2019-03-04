@@ -10,7 +10,7 @@
     "drops":["flour", "bucket"]
   },
   {
-    "name": "chicken",
+    "name": "Chicken",
     "combatLvl": 99,
     "drops":["feather"]
   }
