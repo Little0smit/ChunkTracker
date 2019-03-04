@@ -407,5 +407,60 @@
       ],
       "questPointsReqs":0,
       "questPointsReward":5
+   },
+   {
+      "name":"Sheep Shearer",
+      "steps":[
+         {
+            "stepNumber":1,
+            "stepDescription":"Speak to Fred the Farmer",
+            "itemReqs":null,
+            "chunkLocation":12595,
+            "extraInfo":"Start of quest. Ask for a quest."
+         },
+         {
+            "stepNumber":2,
+            "stepDescription":"Hand in balls of wool",
+            "itemReqs":[
+               {
+                  "itemName":"Ball of wool",
+                  "itemQuantity":20
+               }
+            ],
+            "chunkLocation":12595,
+            "extraInfo":"End of quest."
+         }
+      ],
+      "startingChunk":12595,
+      "questReqs":[
+         ""
+      ],
+      "skillReqs":[
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0
+      ],
+      "questPointsReqs":0,
+      "questPointsReward":1
    }
 ]
