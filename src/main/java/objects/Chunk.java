@@ -93,7 +93,7 @@ public class Chunk extends NamedThing {
                 for (String processTool : skillingLocations){
                     for (Process process : Constant.PROCESSING_TOOL_DATABASE.getElement(processTool).getProcesses()){
                         for (String input : process.getInputs()){
-                            if (Constant.UNLOCKED_ITEM_DATABASE.contains(Constant.ITEM_DATABASE.getElement(input))){
+                            if (Constant.UNLOCKED_ITEM_DATABASE.contains(input)){
                                 if (reqs.get(skill) != null){
                                     if (reqs.get(skill) < process.getLevelRequirement()){
                                         reqs.put(skill, process.getLevelRequirement());
