@@ -41,14 +41,12 @@ public class Chunk extends NamedThing {
     public void addItemsToDB() {
         //Ground Items
         for (String item : groundItems) {
-            Constant.ITEM_DATABASE.registerElement(new Item(item));
             Constant.UNLOCKED_ITEM_DATABASE.registerElement(Constant.ITEM_DATABASE.getElement(item));
         }
         //Shop Items
         for (String shop : shops) {
             ArrayList<String> stock = Constant.SHOP_DATABASE.getElement(shop).getStock();
             for (String item : stock) {
-                Constant.ITEM_DATABASE.registerElement(new Item(item));
                 Constant.UNLOCKED_ITEM_DATABASE.registerElement(Constant.ITEM_DATABASE.getElement(item));
             }
         }
@@ -56,7 +54,6 @@ public class Chunk extends NamedThing {
         for (String mob : mobs) {
             ArrayList<String> drops = Constant.MOB_DATABASE.getElement(mob).getDrops();
             for (String drop : drops) {
-                Constant.ITEM_DATABASE.registerElement(new Item(drop));
                 Constant.UNLOCKED_ITEM_DATABASE.registerElement(Constant.ITEM_DATABASE.getElement(drop));
             }
         }
@@ -73,7 +70,6 @@ public class Chunk extends NamedThing {
                 if (gotInputs) {
                     for (String output :
                             process.getOutputs()) {
-                        Constant.ITEM_DATABASE.registerElement(new Item(output));
                         Constant.UNLOCKED_ITEM_DATABASE.registerElement(Constant.ITEM_DATABASE.getElement(output));
                     }
                 }
