@@ -7,6 +7,8 @@ public class Item extends NamedThing{
 		this.name = name;
 	}
 
+	public Item(){}
+
 	public String getName(){
         return name;
     }
