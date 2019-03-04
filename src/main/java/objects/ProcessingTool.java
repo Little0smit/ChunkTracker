@@ -14,10 +14,10 @@ public class ProcessingTool extends NamedThing {
     public ArrayList<String> getProcessesNames() { return processesNames; }
 
     public ArrayList<Process> getProcesses(){
-        ArrayList<Process> al = new ArrayList<Process>();
+        ArrayList<Process> processes = new ArrayList<Process>();
         for (String string : processesNames){
-            al.add(Constant.PROCESS_DATABASE.getElement(string));
+            processes.add(Constant.PROCESS_DATABASE.getElement(string));
         }
-        return al;
+        return processes;
     }
 }
