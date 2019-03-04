@@ -154,7 +154,7 @@ public class Player {
     }
 
     public EnumMap<WeaponType, EnumMap<EquipmentSlot, EquippableItem[]>> bisItems(){
-        EnumMap<WeaponType, EnumMap<EquipmentSlot, EquippableItem[]>> p = new EnumMap<WeaponType, EnumMap<EquipmentSlot, EquippableItem[]>>(WeaponType.class);
+        EnumMap<WeaponType, EnumMap<EquipmentSlot, EquippableItem[]>> bisItems = new EnumMap<WeaponType, EnumMap<EquipmentSlot, EquippableItem[]>>(WeaponType.class);
 
         for (WeaponType type : WeaponType.values()) {
             EnumMap<EquipmentSlot, EquippableItem[]> bis = new EnumMap<EquipmentSlot, EquippableItem[]>(EquipmentSlot.class);
@@ -167,7 +167,6 @@ public class Player {
                 for (Item item : Constant.UNLOCKED_ITEM_DATABASE.getAllElements()) {
                     if (Constant.EQUIPPABLE_ITEM_DATABASE.contains(item.getName())) {
                         EquippableItem eItem = Constant.EQUIPPABLE_ITEM_DATABASE.getElement(item.getName());
-                        try {
                             if (eItem.getSlot() == slot) {
                                 if (bisArr.size() == 0) {
                                     bisArr.add(eItem);
@@ -178,17 +177,14 @@ public class Player {
                                     bisArr.add(eItem);
                                 }
                             }
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
                     }
                 }
                 bis.put(slot, bisArr.toArray(new EquippableItem[bisArr.size()]));
             }
 
-            p.put(type, bis);
+            bisItems.put(type, bis);
         }
 
-        return p;
+        return bisItems;
     }
 }
