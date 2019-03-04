@@ -1,4 +1,4 @@
-package objects;
+package objects.requirements;
 
 import constants.Constant;
 import constants.Skills;
