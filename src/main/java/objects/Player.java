@@ -217,7 +217,7 @@ public class Player {
                 BiS.put(slot, BiSArr.toArray(new EquippableItem[BiSArr.size()]));
             }
 
-            p.put(type, BiS);
+            bisItems.put(type, BiS);
         }
 
         return p;
