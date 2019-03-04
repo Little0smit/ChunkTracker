@@ -185,7 +185,7 @@ public class Player {
     }
 
     public EnumMap<WeaponType, EnumMap<EquipmentSlot, EquippableItem[]>> BiSItems(){
-        EnumMap<WeaponType, EnumMap<EquipmentSlot, EquippableItem[]>> p = new EnumMap<WeaponType, EnumMap<EquipmentSlot, EquippableItem[]>>(WeaponType.class);
+        EnumMap<WeaponType, EnumMap<EquipmentSlot, EquippableItem[]>> bisItems = new EnumMap<WeaponType, EnumMap<EquipmentSlot, EquippableItem[]>>(WeaponType.class);
 
         for (WeaponType type : WeaponType.values()) {
             EnumMap<EquipmentSlot, EquippableItem[]> BiS = new EnumMap<EquipmentSlot, EquippableItem[]>(EquipmentSlot.class);
