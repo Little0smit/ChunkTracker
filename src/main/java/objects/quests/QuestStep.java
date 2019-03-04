@@ -4,6 +4,7 @@ import constants.Constant;
 import constants.Skills;
 import objects.Item;
 import objects.ItemStack;
+import objects.requirements.ItemRequirements;
 
 import java.util.ArrayList;
 import java.util.EnumMap;
@@ -11,16 +12,16 @@ import java.util.EnumMap;
 public class QuestStep {
     private int stepNumber;
     private String stepDescription, extraInfo;
-    private ArrayList<ItemStack> itemReqs = new ArrayList<ItemStack>();
+    private ItemStack[] itemReqs;
     private int chunkLocation;
     private boolean completed;
 
-    /*public QuestStep(int stepNumber, String stepDescription, ArrayList<String> itemReqs, int chunkLocation) {
+    public QuestStep(int stepNumber, String stepDescription, ItemStack[] itemReqs, int chunkLocation) {
         this.stepNumber = stepNumber;
         this.stepDescription = stepDescription;
         this.itemReqs = itemReqs;
         this.chunkLocation = chunkLocation;
-    }*/
+    }
 
     public int getStepNumber() {
         return stepNumber;
@@ -30,26 +31,27 @@ public class QuestStep {
         return stepDescription;
     }
 
-    public ArrayList<ItemStack> getItemReqs() {
-        return itemReqs;
-    }
 
     /**
-     *Returns true if section of the quest is completable with current unlocks.
+     * This method is used to check if the section of the quest
+     * is completable with current unlocks.
+     * @param unlockedChunks An Array of all chunk integers the player has access to
+     * @param currentSkills  An EnumMap of the players current in-game stats
+     * @return boolean Returns whether the step is completable with current progress.
      */
     public boolean completable(ArrayList<Integer> unlockedChunks, EnumMap<Skills, Integer> currentSkills){
         //Check Location
         if(!unlockedChunks.contains(chunkLocation)) return false;
 
         //Check Items
-        for (ItemStack item:itemReqs) {
-            if (Constant.UNLOCKED_ITEM_DATABASE.contains(item.getItemName())){
-                if(Constant.UNLOCKED_ITEM_DATABASE.contains(item.getItemName())) return false;
-            } else {
-                return false;
-            }
+        //Note this does not check quantity (as it assumes once an item is unlocked, it can be gained repeatably)
+        for (ItemStack itemStack : itemReqs) {
+            if (!Constant.UNLOCKED_ITEM_DATABASE.contains(itemStack.getItemName())){ return false; }
         }
 
+        /*
+        If later discovered some steps have skill requirements rather than the complete quest, check that here.
+        */
         return true;
     }
 
