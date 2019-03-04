@@ -4,7 +4,7 @@ import constants.Constant;
 
 import java.util.ArrayList;
 
-public class ProcessingTool extends NamedThing {
+public class SkillingLocation extends NamedThing {
     //TODO: Rename to SkillingLocation
     private String processToolName = "";
     private ArrayList<String> processesNames = new ArrayList<String>();
