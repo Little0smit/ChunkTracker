@@ -96,7 +96,7 @@
          {
             "stepNumber":5,
             "stepDescription":"Speak to Cook",
-            "itemReqs":null,
+            "itemReqs":[],
             "chunkLocation":12850,
             "extraInfo":"End of quest."
          }
