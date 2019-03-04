@@ -1,21 +1,52 @@
 {
-  "Quest": {
-    "Name": "Quest Name",
-    "Steps": [
-      {"Step Number": 1,
-        "Step Description": "",
-        "Items Required": [""],
-        "Chunk Location": 2000,
-        "Extra Info": "Any extra info about step"
-      }
-    ],
-    "Starting Chunk": 2000,
-    "Requirements":{
-      "Quests":[],
-      "Skills":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-      "Quest Points":0
-    }
-  },
+   {
+      "name":"Quest Name",
+      "steps":[
+         {
+            "stepNumber":1,
+            "stepDescription":"",
+            "itemReqs":[
+               {
+                  "itemName":"",
+                  "itemQuantity":1
+               }
+            ],
+            "chunkLocation":null,
+            "extraInfo":""
+         }
+      ],
+      "startingChunk":2000,
+      "questReqs":[
+         ""
+      ],
+      "skillReqs":[
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0
+      ],
+      "questPointsReqs":0,
+      "questPointsReward":1
+   },
   
   "Item": {
     "Name": "Name",
