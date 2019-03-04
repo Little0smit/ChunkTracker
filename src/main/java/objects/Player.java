@@ -28,20 +28,6 @@ public class Player {
         checkTrainableSkills();
     }
 
-    public Player(ArrayList<Integer> unlockedChunks){
-        this.unlockedChunks = unlockedChunks;
-
-        currentStats = new EnumMap<Skills, Integer>(Skills.class);
-        trainableStats = new EnumMap<Skills, Boolean>(Skills.class);
-        for (Skills skill : Skills.values()) {
-            currentStats.put(skill, 1);
-            trainableStats.put(skill, false);
-        }
-        currentStats.put(Skills.Hitpoints, 10);
-
-        checkTrainableSkills();
-    }
-
     public Player(int[] unlockedChunks){
         for (int i : unlockedChunks){
             this.unlockedChunks.add(i);
@@ -99,24 +85,6 @@ public class Player {
             System.out.println(skill.toString() + ": " + currentStats.get(skill));
         }
     }
-
-    /*public boolean canRollChunk(){
-        for (int chunk : unlockedChunks){
-            //Check if all quests that are completable are completed
-            for (Quest quest : Constant.QUEST_DATABASE.getAllElements()){
-
-            }
-
-            //Check if the player has the required skills
-            for (Skills skill : Skills.values()){
-                if (Constant.CHUNK_DATABASE.getElement(Integer.toString(chunk)).getSkillReqs(this).get(skill) > currentStats.get(skill)){
-                    return false;
-                }
-            }
-        }
-
-        return true;
-    }*/
 
     public void checkTrainableSkills(){
         for (int chunk : unlockedChunks) {
@@ -185,29 +153,29 @@ public class Player {
         return out;
     }
 
-    public EnumMap<WeaponType, EnumMap<EquipmentSlot, EquippableItem[]>> BiSItems(){
+    public EnumMap<WeaponType, EnumMap<EquipmentSlot, EquippableItem[]>> bisItems(){
         EnumMap<WeaponType, EnumMap<EquipmentSlot, EquippableItem[]>> p = new EnumMap<WeaponType, EnumMap<EquipmentSlot, EquippableItem[]>>(WeaponType.class);
 
         for (WeaponType type : WeaponType.values()) {
-            EnumMap<EquipmentSlot, EquippableItem[]> BiS = new EnumMap<EquipmentSlot, EquippableItem[]>(EquipmentSlot.class);
+            EnumMap<EquipmentSlot, EquippableItem[]> bis = new EnumMap<EquipmentSlot, EquippableItem[]>(EquipmentSlot.class);
             for (EquipmentSlot slot : EquipmentSlot.values()) {
-                BiS.put(slot, null);
+                bis.put(slot, null);
             }
 
             for (EquipmentSlot slot : EquipmentSlot.values()) {
-                ArrayList<EquippableItem> BiSArr = new ArrayList<EquippableItem>();
+                ArrayList<EquippableItem> bisArr = new ArrayList<EquippableItem>();
                 for (Item item : Constant.UNLOCKED_ITEM_DATABASE.getAllElements()) {
                     if (Constant.EQUIPPABLE_ITEM_DATABASE.contains(item.getName())) {
                         EquippableItem eItem = Constant.EQUIPPABLE_ITEM_DATABASE.getElement(item.getName());
                         try {
                             if (eItem.getSlot() == slot) {
-                                if (BiSArr.size() == 0) {
-                                    BiSArr.add(eItem);
-                                } else if (BiSArr.get(0).getBiSNumber() < eItem.getBiSNumber()) {
-                                    BiSArr.clear();
-                                    BiSArr.add(eItem);
-                                } else if (BiSArr.get(0).getBiSNumber() == eItem.getBiSNumber()) {
-                                    BiSArr.add(eItem);
+                                if (bisArr.size() == 0) {
+                                    bisArr.add(eItem);
+                                } else if (bisArr.get(0).getBiSNumber() < eItem.getBiSNumber()) {
+                                    bisArr.clear();
+                                    bisArr.add(eItem);
+                                } else if (bisArr.get(0).getBiSNumber() == eItem.getBiSNumber()) {
+                                    bisArr.add(eItem);
                                 }
                             }
                         } catch (Exception e) {
@@ -215,10 +183,10 @@ public class Player {
                         }
                     }
                 }
-                BiS.put(slot, BiSArr.toArray(new EquippableItem[BiSArr.size()]));
+                bis.put(slot, bisArr.toArray(new EquippableItem[bisArr.size()]));
             }
 
-            p.put(type, BiS);
+            p.put(type, bis);
         }
 
         return p;
