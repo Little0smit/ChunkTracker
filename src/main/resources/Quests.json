@@ -53,7 +53,9 @@
          {
             "stepNumber":1,
             "stepDescription":"Talk to Cook",
-            "itemReqs":null,
+            "itemReqs":[
+
+            ],
             "chunkLocation":12850,
             "extraInfo":"Start of quest."
          },
@@ -66,7 +68,7 @@
                   "itemQuantity":1
                }
             ],
-            "chunkLocation":12850,
+            "chunkLocation":null,
             "extraInfo":""
          },
          {
@@ -78,7 +80,7 @@
                   "itemQuantity":1
                }
             ],
-            "chunkLocation":12850,
+            "chunkLocation":null,
             "extraInfo":""
          },
          {
@@ -90,13 +92,15 @@
                   "itemQuantity":1
                }
             ],
-            "chunkLocation":12850,
+            "chunkLocation":null,
             "extraInfo":""
          },
          {
             "stepNumber":5,
             "stepDescription":"Speak to Cook",
-            "itemReqs":[],
+            "itemReqs":[
+
+            ],
             "chunkLocation":12850,
             "extraInfo":"End of quest."
          }
@@ -151,14 +155,18 @@
          {
             "stepNumber":2,
             "stepDescription":"Talk to Sir Prysin",
-            "itemReqs":null,
+            "itemReqs":[
+
+            ],
             "chunkLocation":12854,
             "extraInfo":"In the South-West room of Varrock Castle. Ask for Silverlight."
          },
          {
             "stepNumber":3,
             "stepDescription":"Talk to Captian Rovin",
-            "itemReqs":null,
+            "itemReqs":[
+
+            ],
             "chunkLocation":12854,
             "extraInfo":"2nd floor of Varrock Castle, on the North-West side."
          },
@@ -189,21 +197,27 @@
          {
             "stepNumber":6,
             "stepDescription":"Find sewer key",
-            "itemReqs":null,
+            "itemReqs":[
+
+            ],
             "chunkLocation":12854,
             "extraInfo":"Head West then North in the sewer. Look for a rusty key."
          },
          {
             "stepNumber":7,
             "stepDescription":"Return to Sir Prysin",
-            "itemReqs":null,
+            "itemReqs":[
+
+            ],
             "chunkLocation":12854,
             "extraInfo":"Acquire and equip Silverlight"
          },
          {
             "stepNumber":8,
             "stepDescription":"Defeat Delrith",
-            "itemReqs":null,
+            "itemReqs":[
+
+            ],
             "chunkLocation":12852,
             "extraInfo":"Attack with Silverlight. When Delrith hits 0HP, use the incantation noted in Step 1. End of quest."
          }
@@ -246,35 +260,45 @@
          {
             "stepNumber":1,
             "stepDescription":"Talk to Father Aereck",
-            "itemReqs":null,
+            "itemReqs":[
+
+            ],
             "chunkLocation":12850,
             "extraInfo":"Start of quest. In Lumbridge chapel."
          },
          {
             "stepNumber":2,
             "stepDescription":"Talk to Father Urhney",
-            "itemReqs":null,
+            "itemReqs":[
+
+            ],
             "chunkLocation":12593,
             "extraInfo":"In a small house on the West side of Lumbridge Swamp."
          },
          {
             "stepNumber":3,
             "stepDescription":"Search the coffin",
-            "itemReqs":null,
+            "itemReqs":[
+
+            ],
             "chunkLocation":12849,
             "extraInfo":"Wear your Amulet of ghostspeak to talk to the ghost."
          },
          {
             "stepNumber":4,
             "stepDescription":"Retrieve the skull from the Wizard's Tower",
-            "itemReqs":null,
+            "itemReqs":[
+
+            ],
             "chunkLocation":12337,
             "extraInfo":"Take the skull from the altar under the Tower. A skeleton spawns that you can kill or run from."
          },
          {
             "stepNumber":4,
             "stepDescription":"Return the skull to the ghost",
-            "itemReqs":null,
+            "itemReqs":[
+
+            ],
             "chunkLocation":12849,
             "extraInfo":"Talk to the ghost, then use the skull on the coffin. End of quest."
          }
@@ -317,35 +341,45 @@
          {
             "stepNumber":1,
             "stepDescription":"Talk to Romeo",
-            "itemReqs":null,
+            "itemReqs":[
+
+            ],
             "chunkLocation":12853,
             "extraInfo":"Start of quest. In Varrock Square."
          },
          {
             "stepNumber":2,
             "stepDescription":"Talk to Juliet",
-            "itemReqs":null,
+            "itemReqs":[
+
+            ],
             "chunkLocation":12597,
             "extraInfo":"Juliet is on a balcony on the top floor of a mansion."
          },
          {
             "stepNumber":3,
             "stepDescription":"Deliver letter to Romeo",
-            "itemReqs":null,
+            "itemReqs":[
+
+            ],
             "chunkLocation":12853,
             "extraInfo":""
          },
          {
             "stepNumber":4,
             "stepDescription":"Talk to Father Lawrence",
-            "itemReqs":null,
+            "itemReqs":[
+
+            ],
             "chunkLocation":12854,
             "extraInfo":"Father Lawrence is in the church North-East of the square."
          },
          {
             "stepNumber":5,
             "stepDescription":"Talk to the Apothecary",
-            "itemReqs":null,
+            "itemReqs":[
+
+            ],
             "chunkLocation":12597,
             "extraInfo":"Talk to him until he tells you he needs cadava berries."
          },
@@ -364,14 +398,18 @@
          {
             "stepNumber":7,
             "stepDescription":"Give potion to Juliet",
-            "itemReqs":null,
+            "itemReqs":[
+
+            ],
             "chunkLocation":12597,
             "extraInfo":"Be careful not to drink the potion."
          },
          {
             "stepNumber":8,
             "stepDescription":"Talk to Romeo again",
-            "itemReqs":null,
+            "itemReqs":[
+
+            ],
             "chunkLocation":12853,
             "extraInfo":"End of quest."
          }
@@ -414,7 +452,9 @@
          {
             "stepNumber":1,
             "stepDescription":"Speak to Fred the Farmer",
-            "itemReqs":null,
+            "itemReqs":[
+
+            ],
             "chunkLocation":12595,
             "extraInfo":"Start of quest. Ask for a quest."
          },
