@@ -3,8 +3,8 @@
     "chunkNumber": 1,
     "chunkName": "1",
     "mobs": [
-      "chicken",
-      "goblin"
+      "Chicken",
+      "Goblin"
     ],
     "skillingNodes": [],
     "groundItems": [
