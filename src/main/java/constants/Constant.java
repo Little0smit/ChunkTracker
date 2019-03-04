@@ -16,7 +16,7 @@ public class Constant {
     public static final Database<Item> UNLOCKED_ITEM_DATABASE = new Database<Item>();
     public static final Database<Quest> QUEST_DATABASE = new Database<Quest>();
     public static final Database<Shop> SHOP_DATABASE = new Database<Shop>();
-    public static final Database<ProcessingTool> PROCESSING_TOOL_DATABASE = new Database<ProcessingTool>();
+    public static final Database<SkillingLocation> SKILLING_LOCATION_DATABASE = new Database<SkillingLocation>();
     public static final Database<Process> PROCESS_DATABASE = new Database<Process>();
     public static final Database<EquippableItem> EQUIPPABLE_ITEM_DATABASE = new Database<EquippableItem>();
 
