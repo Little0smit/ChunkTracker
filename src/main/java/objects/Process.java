@@ -8,7 +8,7 @@ import java.util.ArrayList;
 public class Process extends NamedThing {
     private ArrayList<String> inputs, outputs, questRequirements;
     private Skills skillType;
-    private String processName, processingToolName;
+    private String processName;
     private int levelRequirement;
 
     public ArrayList<String> getInputs() { return inputs; }
@@ -21,8 +21,6 @@ public class Process extends NamedThing {
 
 
     public String getName() { return processName; }
-
-    public String getProcessingToolName() { return processingToolName; }
 
     public int getLevelRequirement() { return levelRequirement; }
 
