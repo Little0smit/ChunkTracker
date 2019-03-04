@@ -194,7 +194,7 @@ public class Player {
             }
 
             for (EquipmentSlot slot : EquipmentSlot.values()) {
-                ArrayList<EquippableItem> BiSArr = new ArrayList<EquippableItem>();
+                ArrayList<EquippableItem> bisArr = new ArrayList<EquippableItem>();
                 for (Item item : Constant.UNLOCKED_ITEM_DATABASE.getAllElements()) {
                     if (Constant.EQUIPPABLE_ITEM_DATABASE.contains(item.getName())) {
                         EquippableItem eItem = Constant.EQUIPPABLE_ITEM_DATABASE.getElement(item.getName());
