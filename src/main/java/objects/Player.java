@@ -2,7 +2,6 @@ package objects;
 
 import constants.*;
 import constants.EquipmentSlot;
-import constants.Skills;
 import constants.WeaponType;
 
 import java.util.ArrayList;
