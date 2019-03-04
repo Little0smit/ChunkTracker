@@ -182,8 +182,8 @@
                   "itemName":"Bucket of water",
                   "itemQuantity":1
                }
-            "chunkLocation":12854,
             ],
+            "chunkLocation":12854,
             "extraInfo":"Use the water on a drain North of the Varrock Castle kitchen."
          },
          {
@@ -311,4 +311,101 @@
       "questPointsReqs":0,
       "questPointsReward":1
    },
+   {
+      "name":"Romeo & Juliet",
+      "steps":[
+         {
+            "stepNumber":1,
+            "stepDescription":"Talk to Romeo",
+            "itemReqs":null,
+            "chunkLocation":12853,
+            "extraInfo":"Start of quest. In Varrock Square."
+         },
+         {
+            "stepNumber":2,
+            "stepDescription":"Talk to Juliet",
+            "itemReqs":null,
+            "chunkLocation":12597,
+            "extraInfo":"Juliet is on a balcony on the top floor of a mansion."
+         },
+         {
+            "stepNumber":3,
+            "stepDescription":"Deliver letter to Romeo",
+            "itemReqs":null,
+            "chunkLocation":12853,
+            "extraInfo":""
+         },
+         {
+            "stepNumber":4,
+            "stepDescription":"Talk to Father Lawrence",
+            "itemReqs":null,
+            "chunkLocation":12854,
+            "extraInfo":"Father Lawrence is in the church North-East of the square."
+         },
+         {
+            "stepNumber":5,
+            "stepDescription":"Talk to the Apothecary",
+            "itemReqs":null,
+            "chunkLocation":12597,
+            "extraInfo":"Talk to him until he tells you he needs cadava berries."
+         },
+         {
+            "stepNumber":6,
+            "stepDescription":"Hand in cadava berries",
+            "itemReqs":[
+               {
+                  "itemName":"Cadava berries",
+                  "itemQuantity":1
+               }
+            ],
+            "chunkLocation":12597,
+            "extraInfo":"Cadava berries can be picked south of Varrock."
+         },
+         {
+            "stepNumber":7,
+            "stepDescription":"Give potion to Juliet",
+            "itemReqs":null,
+            "chunkLocation":12597,
+            "extraInfo":"Be careful not to drink the potion."
+         },
+         {
+            "stepNumber":8,
+            "stepDescription":"Talk to Romeo again",
+            "itemReqs":null,
+            "chunkLocation":12853,
+            "extraInfo":"End of quest."
+         }
+      ],
+      "startingChunk":12853,
+      "questReqs":[
+         ""
+      ],
+      "skillReqs":[
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0
+      ],
+      "questPointsReqs":0,
+      "questPointsReward":5
+   }
 ]
