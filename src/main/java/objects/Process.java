@@ -1,5 +1,6 @@
 package objects;
 
+import constants.Constant;
 import constants.Skills;
 
 import java.util.ArrayList;
@@ -7,32 +8,34 @@ import java.util.ArrayList;
 public class Process extends NamedThing {
     private ArrayList<String> inputs, outputs, questRequirements;
     private Skills skillType;
-    private String processName, processingToolName;
-    int levelRequirement;
+    private String processName;
+    private int levelRequirement;
 
-    public Process(ArrayList<String> inputs, ArrayList<String> outputs, ArrayList<String> questRequirements, Skills skillType, String processName) {
-        this.inputs = inputs;
-        this.outputs = outputs;
-        this.questRequirements = questRequirements;
-        this.skillType = skillType;
-        this.processName = processName;
-    }
+    public ArrayList<String> getInputs() { return inputs; }
 
-    public ArrayList<String> getInputs() {
-        return inputs;
-    }
+    public ArrayList<String> getOutputs() { return outputs; }
 
-    public ArrayList<String> getOutputs() {
-        return outputs;
-    }
+    public ArrayList<String> getQuestRequirements() { return questRequirements; }
 
-    public ArrayList<String> getQuestRequirements() {
-        return questRequirements;
-    }
+    public Skills getSkillType() { return skillType; }
 
-    public Skills getSkillType() {
-        return skillType;
-    }
 
     public String getName() { return processName; }
+
+    public int getLevelRequirement() { return levelRequirement; }
+
+    public boolean isDoable(Player player){
+        for (String input : inputs){
+            if(!Constant.UNLOCKED_ITEM_DATABASE.contains(input)) return false;
+        }
+        //if(!Constant.UNLOCKED_ITEM_DATABASE.contains(processingToolName)) return false;
+        if (questRequirements.size() != 0) {
+            for (String questReqs : questRequirements) {
+                if (!player.getCompletedQuests().contains(questReqs)) return false;
+            }
+        }
+        if (player.getCurrentSkillLvl(skillType) < levelRequirement) return false;
+
+        return true;
+    }
 }

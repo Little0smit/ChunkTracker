@@ -1,8 +1,14 @@
 [
   {
-    "name": "Name",
+    "name": "generalStoreLumbrige",
     "chunkLocation": [2000],
-    "stock":[""],
+    "stock":["tinderbox"],
+    "questReqs": [""]
+  },
+  {
+    "name": "bobsAxes",
+    "chunkLocation": [2000],
+    "stock":["bronzeAxe"],
     "questReqs": [""]
   }
 ]

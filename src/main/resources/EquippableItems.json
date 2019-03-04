@@ -1,11 +1,10 @@
-{  
-  "Item": {
-    "Name": "Name",
-    "Equipable": true,
-    "Stats":{
-      "Offensive":[0,0,0,0,0],
-      "Deffensive":[0,0,0,0,0],
-      "Other":[0,0,0,0,0]
-    }
-  },
-}
+[
+  {
+    "name": "mithrilSword",
+    "offensiveStats":[16,11,-2,0,0],
+    "defensiveStats":[0,2,1,0,0],
+    "otherStats":[17,0,0,0,4],
+    "type": "Melee",
+    "slot": "MainHand"
+  }
+]
