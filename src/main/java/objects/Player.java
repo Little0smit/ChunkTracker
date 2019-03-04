@@ -1,6 +1,6 @@
 package objects;
 
-import constants.Constant;
+import constants.*;
 import constants.EquipmentSlot;
 import constants.Skills;
 import constants.WeaponType;
