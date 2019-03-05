@@ -1,0 +1,36 @@
+[
+  {
+    "chunkNumber": 1,
+    "chunkName": "1",
+    "mobs": [
+      "Chicken"
+    ],
+    "groundItems": [
+
+    ],
+    "skillingLocations": [
+      "furnace"
+    ],
+    "shops": [
+      "test shop"
+    ],
+    "otherNotes": "This is a test chunk"
+  },
+  {
+    "chunkNumber": 2,
+    "chunkName": "2",
+    "mobs": [
+      "Goblin"
+    ],
+    "groundItems": [
+
+    ],
+    "skillingLocations": [
+      "tree"
+    ],
+    "shops": [
+
+    ],
+    "otherNotes": ""
+  }
+]

@@ -1,0 +1,105 @@
+[
+  {
+    "name":"Test Quest",
+    "steps":[
+      {
+        "stepNumber":1,
+        "stepDescription":"this is a test step",
+        "itemReqs":[],
+        "chunkLocation":1,
+        "extraInfo":""
+      },
+      {
+        "stepNumber":2,
+        "stepDescription":"this is a test step in a different chunk",
+        "itemReqs":[],
+        "chunkLocation":2,
+        "extraInfo":""
+      },
+      {
+        "stepNumber":3,
+        "stepDescription":"this is a test step that requires items",
+        "itemReqs":["logs"],
+        "chunkLocation":1,
+        "extraInfo":""
+      }
+    ],
+    "startingChunk":1,
+    "questReqs":[],
+    "skillReqs":[
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "questPointsReqs":0,
+    "questPointsReward":1
+  },
+  {
+    "name":"Test Quest 2",
+    "steps":[
+      {
+        "stepNumber":1,
+        "stepDescription":"this is a test step in a quest with some requirements",
+        "itemReqs":[],
+        "chunkLocation":2,
+        "extraInfo":""
+      },
+      {
+        "stepNumber":2,
+        "stepDescription":"",
+        "itemReqs":[],
+        "chunkLocation":2,
+        "extraInfo":""
+      }
+    ],
+    "startingChunk":2,
+    "questReqs":["Test Quest"],
+    "skillReqs":[
+      5,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "questPointsReqs":0,
+    "questPointsReward":1
+  }
+]

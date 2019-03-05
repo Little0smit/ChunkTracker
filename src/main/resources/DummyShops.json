@@ -1,0 +1,7 @@
+[
+  {
+    "name": "test shop",
+    "stock":["test platebody"],
+    "questReqs": ["Test Quest 2"]
+  }
+]
