@@ -1,7 +1,7 @@
 [
   {
-    "name": "test shop",
-    "stock":["test platebody"],
+    "name": "testShop",
+    "stock":["testPlatebody"],
     "questReqs": ["Test Quest 2"]
   }
 ]
