@@ -36,7 +36,7 @@ public class Chunk extends NamedThing {
     /**
      * Adds all accessible items withing the chunk to the unlocked item's database .
      */
-    //TODO: check if items are accesible with current quests/stats/items
+    //TODO: check if items are accessible with current quests/stats/items
     //For example, the cooking apples in the cooking guild are only accessible with 32 cooking and a Chef's hat
     public void addItemsToDB() {
         //Ground Items
