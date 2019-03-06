@@ -127,7 +127,7 @@ public class Player {
 
             //Can every non-combat skill be classified as a process, sometimes without inputs/outputs or both?
             for (String skillingLocations : Constant.CHUNK_DATABASE.getElement(Integer.toString(chunk)).getSkillingLocations()){
-                for (String process : Constant.PROCESSING_TOOL_DATABASE.getElement(skillingLocations).getProcessesNames()){
+                for (String process : Constant.SKILLING_LOCATION_DATABASE.getElement(skillingLocations).getProcessesNames()){
                     if (Constant.PROCESS_DATABASE.getElement(process).isDoable(this)){
                         trainableStats.put(Constant.PROCESS_DATABASE.getElement(process).getSkillType(), true);
                     }

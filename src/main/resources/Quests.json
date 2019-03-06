@@ -1,21 +1,63 @@
 [
    {
-      "name":"Quest Name",
+      "name":"Cook's Assistant",
       "steps":[
          {
             "stepNumber":1,
-            "stepDescription":"",
+            "stepDescription":"Talk to Cook",
+            "itemReqs":[
+
+            ],
+            "chunkLocation":12850,
+            "extraInfo":"Start of quest."
+         },
+         {
+            "stepNumber":2,
+            "stepDescription":"Hand in Pot of flour",
             "itemReqs":[
                {
-                  "itemName":"",
+                  "itemName":"Pot of flour",
                   "itemQuantity":1
                }
             ],
-            "chunkLocation":0,
+            "chunkLocation":12850,
             "extraInfo":""
+         },
+         {
+            "stepNumber":3,
+            "stepDescription":"Hand in Egg",
+            "itemReqs":[
+               {
+                  "itemName":"Egg",
+                  "itemQuantity":1
+               }
+            ],
+            "chunkLocation":12850,
+            "extraInfo":""
+         },
+         {
+            "stepNumber":4,
+            "stepDescription":"Hand in Bucket of milk",
+            "itemReqs":[
+               {
+                  "itemName":"Bucket of milk",
+                  "itemQuantity":1
+               }
+            ],
+            "chunkLocation":12850,
+            "extraInfo":""
+         },
+         {
+            "stepNumber":5,
+            "stepDescription":"Speak to Cook",
+            "itemReqs":[
+
+            ],
+            "chunkLocation":12850,
+            "extraInfo":"End of quest."
          }
       ],
-      "startingChunk":2000,
+      "startingChunk":12850,
       "questReqs":[
          ""
       ],
@@ -48,55 +90,340 @@
       "questPointsReward":1
    },
    {
-      "name":"Cook's Assistant",
+      "name":"Demon Slayer",
       "steps":[
          {
             "stepNumber":1,
-            "stepDescription":"Talk to Cook",
-            "chunkLocation":12850,
-            "extraInfo":"Start of quest."
+            "stepDescription":"Talk to Gypsy",
+            "chunkLocation":12853,
+            "itemReqs":[
+               {
+                  "itemName":"Coins",
+                  "itemQuantity":1
+               }
+            ],
+            "extraInfo":"Start of quest. Take not of Wally's incantation."
          },
          {
             "stepNumber":2,
-            "stepDescription":"Hand in Pot of flour",
+            "stepDescription":"Talk to Sir Prysin",
             "itemReqs":[
-               {
-                  "itemName":"Pot of flour",
-                  "itemQuantity":1
-               }
+
             ],
-            "extraInfo":""
+            "chunkLocation":12854,
+            "extraInfo":"In the South-West room of Varrock Castle. Ask for Silverlight."
          },
          {
             "stepNumber":3,
-            "stepDescription":"Hand in Egg",
+            "stepDescription":"Talk to Captian Rovin",
+            "itemReqs":[
+
+            ],
+            "chunkLocation":12854,
+            "extraInfo":"2nd floor of Varrock Castle, on the North-West side."
+         },
+         {
+            "stepNumber":4,
+            "stepDescription":"Talk to Wizard Traiborn",
             "itemReqs":[
                {
-                  "itemName":"Egg",
+                  "itemName":"Bones",
+                  "itemQuantity":25
+               }
+            ],
+            "chunkLocation":12337,
+            "extraInfo":"1st floor of the Wizards' Tower."
+         },
+         {
+            "stepNumber":5,
+            "stepDescription":"Flush drain",
+            "itemReqs":[
+               {
+                  "itemName":"Bucket of water",
                   "itemQuantity":1
                }
             ],
+            "chunkLocation":12854,
+            "extraInfo":"Use the water on a drain North of the Varrock Castle kitchen."
+         },
+         {
+            "stepNumber":6,
+            "stepDescription":"Find sewer key",
+            "itemReqs":[
+
+            ],
+            "chunkLocation":12854,
+            "extraInfo":"Head West then North in the sewer. Look for a rusty key."
+         },
+         {
+            "stepNumber":7,
+            "stepDescription":"Return to Sir Prysin",
+            "itemReqs":[
+
+            ],
+            "chunkLocation":12854,
+            "extraInfo":"Acquire and equip Silverlight"
+         },
+         {
+            "stepNumber":8,
+            "stepDescription":"Defeat Delrith",
+            "itemReqs":[
+
+            ],
+            "chunkLocation":12852,
+            "extraInfo":"Attack with Silverlight. When Delrith hits 0HP, use the incantation noted in Step 1. End of quest."
+         }
+      ],
+      "startingChunk":12853,
+      "questReqs":[
+         ""
+      ],
+      "skillReqs":[
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0
+      ],
+      "questPointsReqs":0,
+      "questPointsReward":3
+   },
+   {
+      "name":"The Restless Ghost",
+      "steps":[
+         {
+            "stepNumber":1,
+            "stepDescription":"Talk to Father Aereck",
+            "itemReqs":[
+
+            ],
+            "chunkLocation":12850,
+            "extraInfo":"Start of quest. In Lumbridge chapel."
+         },
+         {
+            "stepNumber":2,
+            "stepDescription":"Talk to Father Urhney",
+            "itemReqs":[
+
+            ],
+            "chunkLocation":12593,
+            "extraInfo":"In a small house on the West side of Lumbridge Swamp."
+         },
+         {
+            "stepNumber":3,
+            "stepDescription":"Search the coffin",
+            "itemReqs":[
+
+            ],
+            "chunkLocation":12849,
+            "extraInfo":"Wear your Amulet of ghostspeak to talk to the ghost."
+         },
+         {
+            "stepNumber":4,
+            "stepDescription":"Retrieve the skull from the Wizard's Tower",
+            "itemReqs":[
+
+            ],
+            "chunkLocation":12337,
+            "extraInfo":"Take the skull from the altar under the Tower. A skeleton spawns that you can kill or run from."
+         },
+         {
+            "stepNumber":4,
+            "stepDescription":"Return the skull to the ghost",
+            "itemReqs":[
+
+            ],
+            "chunkLocation":12849,
+            "extraInfo":"Talk to the ghost, then use the skull on the coffin. End of quest."
+         }
+      ],
+      "startingChunk":12850,
+      "questReqs":[
+         ""
+      ],
+      "skillReqs":[
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0
+      ],
+      "questPointsReqs":0,
+      "questPointsReward":1
+   },
+   {
+      "name":"Romeo & Juliet",
+      "steps":[
+         {
+            "stepNumber":1,
+            "stepDescription":"Talk to Romeo",
+            "itemReqs":[
+
+            ],
+            "chunkLocation":12853,
+            "extraInfo":"Start of quest. In Varrock Square."
+         },
+         {
+            "stepNumber":2,
+            "stepDescription":"Talk to Juliet",
+            "itemReqs":[
+
+            ],
+            "chunkLocation":12597,
+            "extraInfo":"Juliet is on a balcony on the top floor of a mansion."
+         },
+         {
+            "stepNumber":3,
+            "stepDescription":"Deliver letter to Romeo",
+            "itemReqs":[
+
+            ],
+            "chunkLocation":12853,
             "extraInfo":""
          },
          {
             "stepNumber":4,
-            "stepDescription":"Hand in Bucket of milk",
+            "stepDescription":"Talk to Father Lawrence",
             "itemReqs":[
-               {
-                  "itemName":"Bucket of milk",
-                  "itemQuantity":1
-               }
+
             ],
-            "extraInfo":""
+            "chunkLocation":12854,
+            "extraInfo":"Father Lawrence is in the church North-East of the square."
          },
          {
             "stepNumber":5,
-            "stepDescription":"Speak to Cook",
-            "chunkLocation":12850,
+            "stepDescription":"Talk to the Apothecary",
+            "itemReqs":[
+
+            ],
+            "chunkLocation":12597,
+            "extraInfo":"Talk to him until he tells you he needs cadava berries."
+         },
+         {
+            "stepNumber":6,
+            "stepDescription":"Hand in cadava berries",
+            "itemReqs":[
+               {
+                  "itemName":"Cadava berries",
+                  "itemQuantity":1
+               }
+            ],
+            "chunkLocation":12597,
+            "extraInfo":"Cadava berries can be picked south of Varrock."
+         },
+         {
+            "stepNumber":7,
+            "stepDescription":"Give potion to Juliet",
+            "itemReqs":[
+
+            ],
+            "chunkLocation":12597,
+            "extraInfo":"Be careful not to drink the potion."
+         },
+         {
+            "stepNumber":8,
+            "stepDescription":"Talk to Romeo again",
+            "itemReqs":[
+
+            ],
+            "chunkLocation":12853,
             "extraInfo":"End of quest."
          }
       ],
-      "startingChunk":12850,
+      "startingChunk":12853,
+      "questReqs":[
+         ""
+      ],
+      "skillReqs":[
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0
+      ],
+      "questPointsReqs":0,
+      "questPointsReward":5
+   },
+   {
+      "name":"Sheep Shearer",
+      "steps":[
+         {
+            "stepNumber":1,
+            "stepDescription":"Speak to Fred the Farmer",
+            "itemReqs":[
+
+            ],
+            "chunkLocation":12595,
+            "extraInfo":"Start of quest. Ask for a quest."
+         },
+         {
+            "stepNumber":2,
+            "stepDescription":"Hand in balls of wool",
+            "itemReqs":[
+               {
+                  "itemName":"Ball of wool",
+                  "itemQuantity":20
+               }
+            ],
+            "chunkLocation":12595,
+            "extraInfo":"End of quest."
+         }
+      ],
+      "startingChunk":12595,
       "questReqs":[
          ""
       ],

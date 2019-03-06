@@ -58,10 +58,10 @@ public class Chunk extends NamedThing {
             }
         }
         //Skilling Locations
-        for (String processingToolString : skillingLocations) {
-            ProcessingTool processingTool = Constant.PROCESSING_TOOL_DATABASE.getElement(processingToolString);
+        for (String skillingLocationString : skillingLocations) {
+            SkillingLocation skillingLocation = Constant.SKILLING_LOCATION_DATABASE.getElement(skillingLocationString);
             for (Process process :
-                    processingTool.getProcesses()) {
+                    skillingLocation.getProcesses()) {
                 boolean gotInputs = true;
                 for (String input :
                         process.getInputs()) {
@@ -86,8 +86,8 @@ public class Chunk extends NamedThing {
 
         for (Skills skill : Skills.values()){
             if (player.isTrainable(skill)){
-                for (String processTool : skillingLocations){
-                    for (Process process : Constant.PROCESSING_TOOL_DATABASE.getElement(processTool).getProcesses()){
+                for (String skillingLocation : skillingLocations){
+                    for (Process process : Constant.SKILLING_LOCATION_DATABASE.getElement(skillingLocation).getProcesses()){
                         for (String input : process.getInputs()){
                             if (Constant.UNLOCKED_ITEM_DATABASE.contains(input)){
                                 if (reqs.get(skill) != null){
