@@ -20,7 +20,10 @@
         "stepNumber": 3,
         "stepDescription": "this is a test step that requires items",
         "itemReqs": [
-          "logs"
+          {
+            "itemName": "logs",
+            "itemQuantity": 1
+          }
         ],
         "chunkLocation": 1,
         "extraInfo": ""

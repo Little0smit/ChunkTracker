@@ -52,6 +52,7 @@ public class Player {
         for (int i : unlockedChunks){
             this.unlockedChunks.add(i);
         }
+        checkTrainableSkills();
     }
 
     public EnumMap<Skills, Integer> getCurrentStats() {
