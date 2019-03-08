@@ -20,7 +20,7 @@ public class DataParser {
             filepath = "src/main/resources/dummyData/";
         }
 		try {
-            System.out.println("bajs");
+            System.out.println("Program is running on Dummy data");
             parseFile(filepath + "Mobs.json", Constant.MOB_DATABASE, Mob[].class);
             parseFile(filepath + "Shops.json", Constant.SHOP_DATABASE, Shop[].class);
             parseFile(filepath + "Processes.json", Constant.PROCESS_DATABASE, Process[].class);

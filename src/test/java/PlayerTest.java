@@ -1,3 +1,4 @@
+import JSON.DataParser;
 import constants.Skills;
 import objects.Player;
 import org.junit.After;
@@ -12,7 +13,8 @@ public class PlayerTest {
 
     @Before
     public void setUp() throws Exception {
-        p = new Player(0);
+        DataParser.parse(true);
+        p = new Player(1);
     }
 
     @After
@@ -26,6 +28,7 @@ public class PlayerTest {
         for (Skills skill : Skills.values()) {
             testArray.put(skill, 1);
         }
+        testArray.put(Skills.Hitpoints,10);
         Assert.assertEquals(testArray, p.getCurrentStats());
     }
 
