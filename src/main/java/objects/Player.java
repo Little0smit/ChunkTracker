@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.EnumMap;
 
 public class Player {
+    private String playerName;
     private EnumMap<Skills, Integer> currentStats;
     private EnumMap<Skills, Boolean> trainableStats;
     private ArrayList<String> completedQuests = new ArrayList<String>();
@@ -42,6 +43,15 @@ public class Player {
         currentStats.put(Skills.Hitpoints, 10);
 
         checkTrainableSkills();
+    }
+
+    public Player(String name, EnumMap<Skills, Integer> currentStats, ArrayList<String> quests, int[] unlockedChunks) {
+        this.playerName = name;
+        this.currentStats = currentStats;
+        this.completedQuests = quests;
+        for (int i : unlockedChunks){
+            this.unlockedChunks.add(i);
+        }
     }
 
     public EnumMap<Skills, Integer> getCurrentStats() {
