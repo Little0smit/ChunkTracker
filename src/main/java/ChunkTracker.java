@@ -1,11 +1,16 @@
 import JSON.DataParser;
 import constants.Constant;
+import constants.EquipmentSlot;
 import constants.Skills;
+import constants.WeaponType;
+import objects.EquippableItem;
 import objects.Player;
+import objects.quests.Quest;
 
 import java.util.*;
 
 public class ChunkTracker {
+    ;
     public static void main(String[] args) {
         if (args.length > 0){
             DataParser.parse(args[0].equals("debug"));
@@ -15,6 +20,40 @@ public class ChunkTracker {
 
         Player player = collectPlayerData();
         player.printStats();
+
+        checkChunkProgress(player);
+    }
+
+    private static boolean checkChunkProgress(Player player) {
+        boolean completed = true;
+        //Check if skills need to be trained for skilling challenges
+        EnumMap<Skills, Integer> skillsToLvl = player.skillsToNextChunk();
+        Set<Skills> s = skillsToLvl.keySet();
+        for (Skills skill: s) {
+            if(skillsToLvl.get(skill) > player.getCurrentSkillLvl(skill))
+                System.out.println(skill.name() + " to level: " + skillsToLvl.get(skill));
+                completed = false;
+        }
+
+        //Check if any quest steps can be completed, and print out if they can
+        for (Quest quest : Constant.QUEST_DATABASE.getAllElements()) {
+            if(quest.isCompletable(player)){
+            	//TODO change this to print out step name also
+	            System.out.println(quest.getName() + " has a completable quest step");
+            	completed = false;
+            }
+        }
+
+	    EnumMap<WeaponType, EnumMap<EquipmentSlot, EquippableItem[]>> bisGear = player.bisItems();
+	    for (WeaponType weaponType : WeaponType.values()) {
+		    EnumMap<EquipmentSlot, EquippableItem[]> bisWeaponGear = bisGear.get(weaponType);
+		    for(EquipmentSlot slot: EquipmentSlot.values()){
+		    	//TODO change this to list all possible, not just the first.
+			    //TODO improve this to compare to current, and just list upgrades.
+			    System.out.println("BIS for " + weaponType.name() + " int the " + slot.name() + " is: " + bisWeaponGear.get(slot)[0]);
+		    }
+	    }
+        return completed;
     }
 
     /*
@@ -114,6 +153,9 @@ public class ChunkTracker {
             questsSplit = questsFull.split(",");
             for (int i = 0; i < questsSplit.length; i++) {
                 questsSplit[i] = questsSplit[i].trim();
+                if(questsSplit[i].equals("")){
+                    return new ArrayList<String>();
+                }
                 if (!Constant.QUEST_DATABASE.contains(questsSplit[i])) {
                     System.out.println(questsSplit[i] + " is not a valid quest name, try again.");
                     inValid = true;
