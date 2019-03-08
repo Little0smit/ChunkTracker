@@ -185,6 +185,34 @@ public class Player {
             bisItems.put(type, bis);
         }
 
+
+
         return bisItems;
+    }
+
+    public EnumMap <EquipmentSlot, EquippableItem[]> getBiSPrayerEqupiment(){
+        EnumMap<EquipmentSlot, EquippableItem[]> bisPrayerEqupiment = new EnumMap<EquipmentSlot, EquippableItem[]>(EquipmentSlot.class);
+
+        for (EquipmentSlot slot : EquipmentSlot.values()) {
+            ArrayList<EquippableItem> bisArr = new ArrayList<EquippableItem>();
+            for (Item item : Constant.UNLOCKED_ITEM_DATABASE.getAllElements()) {
+                if (Constant.EQUIPPABLE_ITEM_DATABASE.contains(item.getName())) {
+                    EquippableItem eItem = Constant.EQUIPPABLE_ITEM_DATABASE.getElement(item.getName());
+                    if (eItem.getSlot() == slot && eItem.getPrayerNumber() != 0) {
+                        if (bisArr.size() == 0) {
+                            bisArr.add(eItem);
+                        } else if (bisArr.get(0).getPrayerNumber() < eItem.getPrayerNumber()) {
+                            bisArr.clear();
+                            bisArr.add(eItem);
+                        } else if (bisArr.get(0).getPrayerNumber() == eItem.getPrayerNumber()) {
+                            bisArr.add(eItem);
+                        }
+                    }
+                }
+            }
+            bisPrayerEqupiment.put(slot, bisArr.toArray(new EquippableItem[bisArr.size()]));
+        }
+
+        return bisPrayerEqupiment;
     }
 }
