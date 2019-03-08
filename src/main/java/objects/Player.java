@@ -9,10 +9,12 @@ import java.util.ArrayList;
 import java.util.EnumMap;
 
 public class Player {
+    private String playerName;
     private EnumMap<Skills, Integer> currentStats;
     private EnumMap<Skills, Boolean> trainableStats;
     private ArrayList<String> completedQuests = new ArrayList<String>();
     private ArrayList<Integer> unlockedChunks = new ArrayList<Integer>();
+    private int questPoints = 0;
 
     public Player(int startingChunk){
         unlockedChunks.add(startingChunk);
@@ -41,6 +43,28 @@ public class Player {
         }
         currentStats.put(Skills.Hitpoints, 10);
 
+        checkTrainableSkills();
+            }
+
+    public Player(String name, EnumMap<Skills, Integer> currentStats, ArrayList<String> quests, int[] unlockedChunks) {
+        this.playerName = name;
+        this.currentStats = currentStats;
+        this.completedQuests = quests;
+		//Marks all completed quests, and tracks the quest points for completing them.
+        for (String questName :completedQuests) {
+            Constant.QUEST_DATABASE.getElement(questName).setCompleted(true);
+            questPoints+=Constant.QUEST_DATABASE.getElement(questName).getQuestPointsReward();
+        }
+
+        trainableStats = new EnumMap<Skills, Boolean>(Skills.class);
+        for (int i : unlockedChunks){
+            this.unlockedChunks.add(i);
+            Constant.CHUNK_DATABASE.getElement(Integer.toString(i)).addItemsToDB();
+        }
+        //Default all skills to un-trainable before setting what is.
+        for (Skills skill : Skills.values()) {
+            trainableStats.put(skill, false);
+        }
         checkTrainableSkills();
     }
 
@@ -118,7 +142,7 @@ public class Player {
             //TODO: Add better checking for rune availability, through 100% drops and rune shops
             for (String shopName : Constant.CHUNK_DATABASE.getElement(Integer.toString(chunk)).getShops()){
                 for (String item : Constant.SHOP_DATABASE.getElement(shopName).getStock()){
-                    if (item == "mindRune"){
+                    if (item.equals("mindRune")){
                         trainableStats.put(Skills.Magic, true);
                     }
                 }
@@ -188,6 +212,10 @@ public class Player {
 
 
         return bisItems;
+    }
+
+    public int getQuestPoints() {
+        return questPoints;
     }
 
     public EnumMap <EquipmentSlot, EquippableItem[]> getBiSPrayerEqupiment(){

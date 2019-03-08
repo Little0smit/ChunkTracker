@@ -1,0 +1,20 @@
+[
+  {
+    "processToolName": "furnace",
+    "processesNames": [
+      "bronzeSmelting"
+    ]
+  },
+  {
+    "processToolName": "tree",
+    "processesNames": [
+      "treeChopping"
+    ]
+  },
+  {
+    "processToolName": "testTree",
+    "processesNames": [
+      "testTreeChopping"
+    ]
+  }
+]

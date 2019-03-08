@@ -2,6 +2,7 @@ package objects.quests;
 
 import constants.Skills;
 import objects.NamedThing;
+import objects.Player;
 import objects.requirements.SkillRequirements;
 
 import java.util.ArrayList;
@@ -40,7 +41,8 @@ public class Quest extends NamedThing {
      * @param questPoints The current quest point count the player is at, in int.
      * @return Boolean whether the next step is completable, False if completed or not possible to start.
      */
-    public boolean isCompletable(ArrayList<Integer> unlockedChunks, EnumMap<Skills, Integer> currentSkills, ArrayList<String> completedQuests, int questPoints){
+    public boolean isCompletable(ArrayList<Integer> unlockedChunks, EnumMap<Skills, Integer> currentSkills,
+                                 ArrayList<String> completedQuests, int questPoints){
         if (completed) return false;
 
         SkillRequirements sr = new SkillRequirements(skillReqs);
@@ -70,6 +72,14 @@ public class Quest extends NamedThing {
         return false;
     }
 
+    public boolean isCompletable(Player player) {
+        ArrayList<Integer> unlockedChunks = player.getUnlockedChunks();
+        EnumMap<Skills, Integer> currentSkills = player.getCurrentStats();
+        ArrayList<String> completedQuests = player.getCompletedQuests();
+        int questPoints = player.getQuestPoints();
+        return this.isCompletable(unlockedChunks, currentSkills,completedQuests,questPoints);
+    }
+
     public boolean isCompleted() {
         return completed;
     }
@@ -77,15 +87,15 @@ public class Quest extends NamedThing {
     public void setCompleted(boolean completed) {
         this.completed = completed;
     }
-    
+
     public boolean isStarted(){
         return started;
     }
-    
+
     public void startQuest(){
         started = true;
     }
-    
+
     public String getName(){
         return name;
     }
