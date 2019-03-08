@@ -21,7 +21,7 @@
         "stepDescription": "this is a test step that requires items",
         "itemReqs": [
           {
-            "itemName": "logs",
+            "itemName": "Logs",
             "itemQuantity": 1
           }
         ],

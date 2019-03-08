@@ -3,11 +3,11 @@
     "skillType": "Smithing",
     "levelRequirement": 1,
     "inputs": [
-      "tinOre",
-      "copperOre"
+      "Tin ore",
+      "Copper ore"
     ],
     "outputs": [
-      "bronzeBar"
+      "Bronze bar"
     ],
     "questRequirements": [],
     "processName": "bronzeSmelting"
@@ -17,7 +17,7 @@
     "levelRequirement": 1,
     "inputs": [],
     "outputs": [
-      "logs"
+      "Logs"
     ],
     "questRequirements": [],
     "processName": "treeChopping"
@@ -27,7 +27,7 @@
     "levelRequirement": 20,
     "inputs": [],
     "outputs": [
-      "testLogs"
+      "Test logs"
     ],
     "questRequirements": [
       "Test Quest"

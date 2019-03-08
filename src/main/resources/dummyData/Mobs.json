@@ -10,7 +10,7 @@
     "name": "Chicken",
     "combatLvl": 5,
     "drops": [
-      "testSword"
+      "Test sword"
     ]
   }
 ]

@@ -1,29 +1,23 @@
 [
   {
-    "name": "testPlatebody"
+    "name": "Test platebody"
   },
   {
-    "name": "testSword"
+    "name": "Test sword"
   },
   {
-    "name": "logs"
+    "name": "Logs"
   },
   {
-    "name": "tinOre"
+    "name": "Tin ore"
   },
   {
-    "name": "copperOre"
+    "name": "Copper ore"
   },
   {
-    "name": "bronzeBar"
+    "name": "Bronze bar"
   },
   {
-    "name": "testLogs"
-  },
-  {
-    "name": ""
-  },
-  {
-    "name": ""
+    "name": "Test logs"
   }
 ]
