@@ -2,11 +2,15 @@
   {
     "name": "Goblin",
     "combatLvl": 2,
-    "drops":["logs"]
+    "drops": [
+      "logs"
+    ]
   },
   {
     "name": "Chicken",
     "combatLvl": 5,
-    "drops":["testSword"]
+    "drops": [
+      "testSword"
+    ]
   }
 ]

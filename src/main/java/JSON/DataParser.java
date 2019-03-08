@@ -3,37 +3,40 @@ package JSON;
 import com.google.gson.Gson;
 import constants.Constant;
 import databases.Database;
-import objects.*;
 import objects.Process;
+import objects.*;
 import objects.quests.Quest;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 
 public class DataParser {
 
 	public static void parse (boolean dummy){
+        String filepath = "src/main/resources/realData/";
+        if (dummy) {
+            filepath = "src/main/resources/dummyData/";
+        }
 		try {
-			if (dummy) {
-				System.out.println("bajs");
-				parseFile("src/main/resources/DummyMobs.json", Constant.MOB_DATABASE, Mob[].class);
-				parseFile("src/main/resources/DummyShops.json", Constant.SHOP_DATABASE, Shop[].class);
-				parseFile("src/main/resources/DummyProcesses.json", Constant.PROCESS_DATABASE, Process[].class);
-				parseFile("src/main/resources/DummyQuests.json", Constant.QUEST_DATABASE, Quest[].class);
-				parseFile("src/main/resources/DummyChunks.json", Constant.CHUNK_DATABASE, Chunk[].class);
-				parseFile("src/main/resources/DummySkillingLocations.json", Constant.SKILLING_LOCATION_DATABASE, SkillingLocation[].class);
-				parseFile("src/main/resources/DummyEquippableItems.json", Constant.EQUIPPABLE_ITEM_DATABASE, EquippableItem[].class);
-			} else {
-				parseFile("src/main/resources/Mobs.json", Constant.MOB_DATABASE, Mob[].class);
-				parseFile("src/main/resources/Shops.json", Constant.SHOP_DATABASE, Shop[].class);
-				parseFile("src/main/resources/Processes.json", Constant.PROCESS_DATABASE, Process[].class);
-				parseFile("src/main/resources/Quests.json", Constant.QUEST_DATABASE, Quest[].class);
-				parseFile("src/main/resources/Chunks.json", Constant.CHUNK_DATABASE, Chunk[].class);
-				parseFile("src/main/resources/SkillingLocations.json", Constant.SKILLING_LOCATION_DATABASE, SkillingLocation[].class);
-				parseFile("src/main/resources/EquippableItems.json", Constant.EQUIPPABLE_ITEM_DATABASE, EquippableItem[].class);
-			}
+            System.out.println("bajs");
+            parseFile(filepath + "Mobs.json", Constant.MOB_DATABASE, Mob[].class);
+            parseFile(filepath + "Shops.json", Constant.SHOP_DATABASE, Shop[].class);
+            parseFile(filepath + "Processes.json", Constant.PROCESS_DATABASE, Process[].class);
+            parseFile(filepath + "Quests.json", Constant.QUEST_DATABASE, Quest[].class);
+            parseFile(filepath + "Chunks.json", Constant.CHUNK_DATABASE, Chunk[].class);
+            parseFile(filepath + "SkillingLocations.json", Constant.SKILLING_LOCATION_DATABASE, SkillingLocation[].class);
+            parseFile(filepath + "EquippableItems.json", Constant.EQUIPPABLE_ITEM_DATABASE, EquippableItem[].class);
+            parseFile(filepath + "Items.json", Constant.ITEM_DATABASE, Item[].class);
+
+			/*
+			N.B. Not needed as Items.json contains all items, and only want to populate the unlocked items.
 			for (Chunk chunk : Constant.CHUNK_DATABASE.getAllElements()){
 				chunk.addItemsToDB();
 			}
+			*/
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

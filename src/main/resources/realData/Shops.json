@@ -1,0 +1,20 @@
+[
+  {
+    "name": "generalStoreLumbrige",
+    "stock": [
+      "tinderbox"
+    ],
+    "questReqs": [
+      ""
+    ]
+  },
+  {
+    "name": "bobsAxes",
+    "stock": [
+      "bronzeAxe"
+    ],
+    "questReqs": [
+      ""
+    ]
+  }
+]

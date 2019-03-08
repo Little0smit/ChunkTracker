@@ -1,0 +1,19 @@
+[
+  {
+    "name": "Name",
+    "startChunk": 1,
+    "destination": 5,
+    "requirements": [
+      {
+        "skill": "",
+        "level": 0
+      },
+      {
+        "item": ""
+      },
+      {
+        "quest": []
+      }
+    ]
+  }
+]

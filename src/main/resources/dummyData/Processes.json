@@ -2,8 +2,13 @@
   {
     "skillType": "Smithing",
     "levelRequirement": 1,
-    "inputs": ["tinOre","copperOre"],
-    "outputs": ["bronzeBar"],
+    "inputs": [
+      "tinOre",
+      "copperOre"
+    ],
+    "outputs": [
+      "bronzeBar"
+    ],
     "questRequirements": [],
     "processName": "bronzeSmelting"
   },
@@ -11,7 +16,9 @@
     "skillType": "Woodcutting",
     "levelRequirement": 1,
     "inputs": [],
-    "outputs": ["logs"],
+    "outputs": [
+      "logs"
+    ],
     "questRequirements": [],
     "processName": "treeChopping"
   },
@@ -19,8 +26,12 @@
     "skillType": "Woodcutting",
     "levelRequirement": 20,
     "inputs": [],
-    "outputs": ["testLogs"],
-    "questRequirements": ["Test Quest"],
+    "outputs": [
+      "testLogs"
+    ],
+    "questRequirements": [
+      "Test Quest"
+    ],
     "processName": "testTreeChopping"
   }
 ]
