@@ -1,12 +1,11 @@
 import JSON.DataParser;
+import constants.Constant;
 import constants.Skills;
 import objects.Player;
 
-import java.util.ArrayList;
-import java.util.EnumMap;
-import java.util.Scanner;
+import java.util.*;
 
-public class main {
+public class ChunkTracker {
     public static void main(String[] args) {
         if (args.length > 0){
             DataParser.parse(args[0].equals("debug"));
@@ -14,12 +13,12 @@ public class main {
             DataParser.parse(false);
         }
 
-        Player player = collectPlayerData();;
+        Player player = collectPlayerData();
         player.printStats();
     }
 
     /*
-    Not sure if i like the data collection classes being in main, considering new locations they can be instead.
+    Not sure if i like the data collection classes being in ChunkTracker, considering new locations they can be instead.
      */
 
     /**
@@ -45,15 +44,23 @@ public class main {
     private static EnumMap<Skills, Integer> getCurrentStats(Scanner in) {
         EnumMap<Skills, Integer> currentStats = new EnumMap<Skills, Integer>(Skills.class);
         for (Skills skill: Skills.values()) {
-            Boolean valid = false;
+            boolean inValid = false;
             int value = 1;
-            while(!valid) {
+            do {
                 System.out.print("Enter your current " + skill.toString() + " level: ");
-                value = in.nextInt();
-                in.nextLine();
-                //TODO input validation here
-                valid = true;
-            }
+                //Considering swapping this try catch with hasNextInt() to make it neater
+                try{
+                    value = in.nextInt();
+                    in.nextLine();
+                } catch (InputMismatchException e){
+                    System.out.println("Invalid input, must be a number");
+                    inValid = true;
+                }
+                if(value < 1||value>99){
+                    System.out.println("Invalid input, must be a number between 1-99 inclusive");
+                    inValid = true;
+                }
+            } while (inValid);
             currentStats.put(skill, value);
         }
         return currentStats;
@@ -65,19 +72,28 @@ public class main {
      * @return int[] of all unlocked chunks.
      */
     private static int[] getUnlockedChunks(Scanner in) {
-        Boolean valid = false;
-        String[] chunksSplitString = new String[0];
-        while(!valid){
+        boolean inValid = false;
+        int[] chunks;
+        do{
             System.out.println("Enter a list of all chunks unlocked, separated by a comma.");
             String allChunks = in.nextLine();
-            chunksSplitString = allChunks.split(",");
-            //TODO input validation here.
-            valid = true;
-        }
-        int[] chunks = new int[chunksSplitString.length];
-        for (int i = 0; i < chunks.length; i++) {
-            chunks[i] = Integer.parseInt(chunksSplitString[i].trim());
-        }
+            String[] chunksSplitString = allChunks.split(",");
+            chunks = new int[chunksSplitString.length];
+            for (int i = 0; i < chunks.length; i++) {
+                try {
+                    chunks[i] = Integer.parseInt(chunksSplitString[i].trim());
+                } catch (NumberFormatException e){
+                    System.out.println("Error: " + chunksSplitString[i].trim() + " is not a valid int");
+                    inValid=true;
+                    break;
+                }
+                if(!Constant.CHUNK_DATABASE.contains(chunksSplitString[i].trim())){
+                    System.out.println(chunksSplitString[i].trim() + " is not a valid chunk number.");
+                    inValid = true;
+                    break;
+                }
+            }
+        } while (inValid);
         return chunks;
     }
 
@@ -86,21 +102,22 @@ public class main {
      * @param in a Scanner object to read input from
      * @return ArrayList of all the completed quests as strings
      */
-    public static ArrayList<String> getCompletedQuests(Scanner in){
-        Boolean valid = false;
-        String[] questsSplit = new String[0];
-        ArrayList<String> quests = new ArrayList();
-        while(!valid){
+    private static ArrayList<String> getCompletedQuests(Scanner in) {
+        boolean inValid = false;
+        String[] questsSplit;
+        do {
             System.out.println("Enter a list of all quest's completed, as spelt in quest log, separated by a comma.");
             String questsFull = in.nextLine();
-            //TODO do some input validation here.
-            valid = true;
-            //TODO got to change this as only getting 1 quest.
             questsSplit = questsFull.split(",");
-        }
-        for (String quest: questsSplit) {
-            quests.add(quest.trim());
-        }
-        return quests;
+            for (int i = 0; i < questsSplit.length; i++) {
+                questsSplit[i] = questsSplit[i].trim();
+                if (!Constant.QUEST_DATABASE.contains(questsSplit[i])) {
+                    System.out.println(questsSplit[i] + " is not a valid quest name, try again.");
+                    inValid = true;
+                    break;
+                }
+            }
+        } while (inValid);
+        return new ArrayList<String>(Arrays.asList(questsSplit));
     }
 }
