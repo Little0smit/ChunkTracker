@@ -49,6 +49,7 @@ public class Player {
         this.playerName = name;
         this.currentStats = currentStats;
         this.completedQuests = quests;
+        trainableStats = new EnumMap<Skills, Boolean>(Skills.class);
         for (int i : unlockedChunks){
             this.unlockedChunks.add(i);
         }

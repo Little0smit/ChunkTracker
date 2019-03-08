@@ -44,9 +44,10 @@ public class ChunkTracker {
     private static EnumMap<Skills, Integer> getCurrentStats(Scanner in) {
         EnumMap<Skills, Integer> currentStats = new EnumMap<Skills, Integer>(Skills.class);
         for (Skills skill: Skills.values()) {
-            boolean inValid = false;
+            boolean inValid;
             int value = 1;
             do {
+                inValid = false;
                 System.out.print("Enter your current " + skill.toString() + " level: ");
                 //Considering swapping this try catch with hasNextInt() to make it neater
                 try{
@@ -72,9 +73,10 @@ public class ChunkTracker {
      * @return int[] of all unlocked chunks.
      */
     private static int[] getUnlockedChunks(Scanner in) {
-        boolean inValid = false;
+        boolean inValid;
         int[] chunks;
         do{
+            inValid = false;
             System.out.println("Enter a list of all chunks unlocked, separated by a comma.");
             String allChunks = in.nextLine();
             String[] chunksSplitString = allChunks.split(",");
@@ -103,9 +105,10 @@ public class ChunkTracker {
      * @return ArrayList of all the completed quests as strings
      */
     private static ArrayList<String> getCompletedQuests(Scanner in) {
-        boolean inValid = false;
+        boolean inValid;
         String[] questsSplit;
         do {
+            inValid = false;
             System.out.println("Enter a list of all quest's completed, as spelt in quest log, separated by a comma.");
             String questsFull = in.nextLine();
             questsSplit = questsFull.split(",");
