@@ -71,8 +71,13 @@
       },
       {
         "stepNumber": 2,
-        "stepDescription": "",
-        "itemReqs": [],
+        "stepDescription": "this is a step which requires items obtained from a mob",
+        "itemReqs": [
+          {
+            "itemName": "Loot",
+            "itemQuantity": 1
+          }
+        ],
         "chunkLocation": 2,
         "extraInfo": ""
       }
