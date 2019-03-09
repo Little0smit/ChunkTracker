@@ -6,6 +6,7 @@ import constants.WeaponType;
 import objects.EquippableItem;
 import objects.Player;
 import objects.quests.Quest;
+import objects.quests.QuestStep;
 
 import java.util.*;
 
@@ -19,9 +20,9 @@ public class ChunkTracker {
         }
 
         Player player = collectPlayerData();
-        player.printStats();
+        //player.printStats();
 
-        checkChunkProgress(player);
+        System.out.println("The chunk is " + (checkChunkProgress(player) ? "" : "not") + " completed with the current stats and quests");
     }
 
     private static boolean checkChunkProgress(Player player) {
@@ -38,8 +39,11 @@ public class ChunkTracker {
         //Check if any quest steps can be completed, and print out if they can
         for (Quest quest : Constant.QUEST_DATABASE.getAllElements()) {
             if(quest.isCompletable(player)){
-            	//TODO change this to print out step name also
-	            System.out.println(quest.getName() + " has a completable quest step");
+	            for (QuestStep questStep : quest.getQuestSteps()){
+	                if (questStep.getStepNumber() <= quest.getLastCompletableStep(player)){
+                        System.out.println("Step " + questStep.getStepNumber() + " in quest " + quest.getName() + " is completable: " + questStep.getStepDescription());
+                    }
+                }
             	completed = false;
             }
         }
@@ -48,11 +52,27 @@ public class ChunkTracker {
 	    for (WeaponType weaponType : WeaponType.values()) {
 		    EnumMap<EquipmentSlot, EquippableItem[]> bisWeaponGear = bisGear.get(weaponType);
 		    for(EquipmentSlot slot: EquipmentSlot.values()){
-		    	//TODO change this to list all possible, not just the first.
 			    //TODO improve this to compare to current, and just list upgrades.
-			    System.out.println("BIS for " + weaponType.name() + " int the " + slot.name() + " is: " + bisWeaponGear.get(slot)[0]);
+                for (EquippableItem ei : bisWeaponGear.get(slot)){
+                    System.out.println("BIS for " + weaponType.name() + " in the " + slot.name() + " is: " + ei.getName());
+                }
+                if (bisWeaponGear.get(slot).length == 0){
+                    //System.out.println("There is no BIS for " + weaponType.name() + " int the " + slot.name());
+                }
 		    }
 	    }
+
+        EnumMap<EquipmentSlot, EquippableItem[]> bisWeaponGear = player.getBiSPrayerEqupiment();
+        for(EquipmentSlot slot: EquipmentSlot.values()){
+            //TODO improve this to compare to current, and just list upgrades.
+            for (EquippableItem ei : bisWeaponGear.get(slot)){
+                System.out.println("BIS for Prayer in the " + slot.name() + " is: " + ei.getName());
+            }
+            if (bisWeaponGear.get(slot).length == 0){
+                //System.out.println("There is no BIS for prayer int the " + slot.name());
+            }
+        }
+
         return completed;
     }
 
