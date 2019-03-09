@@ -39,7 +39,7 @@ public class Chunk extends NamedThing {
      */
     //TODO: check if items are accessible with current quests/stats/items
     //For example, the cooking apples in the cooking guild are only accessible with 32 cooking and a Chef's hat
-    public void addItemsToDB() {
+    public void addItemsToDB(Player player) {
         //Ground Items
         for (String item : groundItems) {
             Constant.UNLOCKED_ITEM_DATABASE.registerElement(Constant.ITEM_DATABASE.getElement(item));
@@ -69,22 +69,20 @@ public class Chunk extends NamedThing {
                 }
             }
         }
-    }
 
-    public void addShopItemsToDB(Player player){
-        for (String shop : shops) {
-            boolean hasQuestReqs = true;
-            for (String questReqs : Constant.SHOP_DATABASE.getElement(shop).getQuestReqs()){
-                hasQuestReqs = hasQuestReqs && (player.getCompletedQuests().contains(questReqs) || Constant.QUEST_DATABASE.getElement(questReqs)
-                        .isFullyCompletable(player));
-            }
-            if (hasQuestReqs) {
-                ArrayList<String> stock = Constant.SHOP_DATABASE.getElement(shop).getStock();
-                for (String item : stock) {
-                    Constant.UNLOCKED_ITEM_DATABASE.registerElement(Constant.ITEM_DATABASE.getElement(item));
-                }
-            }
-        }
+		for (String shop : shops) {
+			boolean hasQuestReqs = true;
+			for (String questReqs : Constant.SHOP_DATABASE.getElement(shop).getQuestReqs()){
+				hasQuestReqs = hasQuestReqs && (player.getCompletedQuests().contains(questReqs) || Constant.QUEST_DATABASE.getElement(questReqs)
+						.isFullyCompletable(player));
+			}
+			if (hasQuestReqs) {
+				ArrayList<String> stock = Constant.SHOP_DATABASE.getElement(shop).getStock();
+				for (String item : stock) {
+					Constant.UNLOCKED_ITEM_DATABASE.registerElement(Constant.ITEM_DATABASE.getElement(item));
+				}
+			}
+		}
     }
 
     public EnumMap<Skills, Integer> getSkillReqs(Player player){
