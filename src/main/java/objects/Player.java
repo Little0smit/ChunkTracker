@@ -50,22 +50,34 @@ public class Player {
         this.playerName = name;
         this.currentStats = currentStats;
         this.completedQuests = quests;
+
+        for (int i : unlockedChunks){
+            this.unlockedChunks.add(i);
+        }
+
 		//Marks all completed quests, and tracks the quest points for completing them.
-        for (String questName :completedQuests) {
+        for (String questName : completedQuests) {
             Constant.QUEST_DATABASE.getElement(questName).setCompleted(true);
             questPoints+=Constant.QUEST_DATABASE.getElement(questName).getQuestPointsReward();
         }
 
         trainableStats = new EnumMap<Skills, Boolean>(Skills.class);
-        for (int i : unlockedChunks){
-            this.unlockedChunks.add(i);
-            Constant.CHUNK_DATABASE.getElement(Integer.toString(i)).addItemsToDB();
-        }
         //Default all skills to un-trainable before setting what is.
         for (Skills skill : Skills.values()) {
             trainableStats.put(skill, false);
         }
-        checkTrainableSkills();
+
+        //This looks stupid, but is necessary.
+        //Some items require certain skills to be trainable to be unlocked and some skills require certain items to be unlocked to be trainable
+        //To avoid having to do some fancy working out to determine what should be parsed first, we simply do this instead
+        //If processing time is important, this could be reworked.
+        for (int i = 0; i < 10; i++) {
+            checkTrainableSkills();
+
+            for (int chunk : unlockedChunks) {
+                Constant.CHUNK_DATABASE.getElement(Integer.toString(chunk)).addItemsToDB(this);
+            }
+        }
     }
 
     public EnumMap<Skills, Integer> getCurrentStats() {
@@ -149,6 +161,7 @@ public class Player {
             }
 
 
+            //Can every non-combat skill be classified as a process, sometimes without inputs/outputs or both?
             for (String skillingLocations : Constant.CHUNK_DATABASE.getElement(Integer.toString(chunk)).getSkillingLocations()){
                 for (String process : Constant.SKILLING_LOCATION_DATABASE.getElement(skillingLocations).getProcessesNames()){
                     if (Constant.PROCESS_DATABASE.getElement(process).isDoable(this)){
@@ -162,20 +175,25 @@ public class Player {
     public EnumMap<Skills, Integer> skillsToNextChunk (){
         //TODO: loop through skilling nodes to determine levels instead of looking at the chunks
         EnumMap<Skills, Integer> out = new EnumMap<Skills, Integer>(Skills.class);
-        for (Skills skill : Skills.values()) {
-            out.put(skill, 0);
-        }
 
         for (int chunk : unlockedChunks){
             EnumMap<Skills, Integer> chunkSkills = Constant.CHUNK_DATABASE.getElement(Integer.toString(chunk)).getSkillReqs(this);
-            for (Skills skill : Skills.values()){
-                out.put(skill, Math.max(out.get(skill), chunkSkills.get(skill)));
+            for (Skills skill : chunkSkills.keySet()){
+                if (out.containsKey(skill)) {
+                    out.put(skill, Math.max(out.get(skill), chunkSkills.get(skill)));
+                } else {
+                    out.put(skill, chunkSkills.get(skill));
+                }
             }
         }
 
         return out;
     }
 
+    /**
+     * Gets the best in slot items available to a player.
+     * @return EnumMap\<WeaponType, EnumMap\<EquipmentSlot, EquippableItem[]\>\> an EnumMap with WeaponType as key, and EnumMap\<EquipmentSlot, EquippableItem[]\>
+     */
     public EnumMap<WeaponType, EnumMap<EquipmentSlot, EquippableItem[]>> bisItems(){
         EnumMap<WeaponType, EnumMap<EquipmentSlot, EquippableItem[]>> bisItems = new EnumMap<WeaponType, EnumMap<EquipmentSlot, EquippableItem[]>>(WeaponType.class);
 
@@ -190,23 +208,27 @@ public class Player {
                 for (Item item : Constant.UNLOCKED_ITEM_DATABASE.getAllElements()) {
                     if (Constant.EQUIPPABLE_ITEM_DATABASE.contains(item.getName())) {
                         EquippableItem eItem = Constant.EQUIPPABLE_ITEM_DATABASE.getElement(item.getName());
-                            if (eItem.getSlot() == slot) {
+                        if (Constant.UNLOCKED_ITEM_DATABASE.contains(eItem.getName())) {
+                            if (eItem.getSlot() == slot && eItem.getBiSNumber(type) > 0) {
                                 if (bisArr.size() == 0) {
                                     bisArr.add(eItem);
-                                } else if (bisArr.get(0).getBiSNumber() < eItem.getBiSNumber()) {
+                                } else if (bisArr.get(0).getBiSNumber(type) < eItem.getBiSNumber(type)) {
                                     bisArr.clear();
                                     bisArr.add(eItem);
-                                } else if (bisArr.get(0).getBiSNumber() == eItem.getBiSNumber()) {
+                                } else if (bisArr.get(0).getBiSNumber(type) == eItem.getBiSNumber(type)) {
                                     bisArr.add(eItem);
                                 }
                             }
+                        }
                     }
                 }
-                bis.put(slot, bisArr.toArray(new EquippableItem[bisArr.size()]));
+                bis.put(slot, bisArr.toArray(new EquippableItem[0]));
             }
 
             bisItems.put(type, bis);
         }
+
+
 
         return bisItems;
     }
@@ -214,4 +236,32 @@ public class Player {
     public int getQuestPoints() {
         return questPoints;
     }
+
+    public EnumMap <EquipmentSlot, EquippableItem[]> getBiSPrayerEqupiment(){
+        EnumMap<EquipmentSlot, EquippableItem[]> bisPrayerEqupiment = new EnumMap<EquipmentSlot, EquippableItem[]>(EquipmentSlot.class);
+
+        for (EquipmentSlot slot : EquipmentSlot.values()) {
+            ArrayList<EquippableItem> bisArr = new ArrayList<EquippableItem>();
+            for (Item item : Constant.UNLOCKED_ITEM_DATABASE.getAllElements()) {
+                if (Constant.EQUIPPABLE_ITEM_DATABASE.contains(item.getName())) {
+                    EquippableItem eItem = Constant.EQUIPPABLE_ITEM_DATABASE.getElement(item.getName());
+                    if (eItem.getSlot() == slot && eItem.getPrayerNumber() != 0) {
+                        if (bisArr.size() == 0) {
+                            bisArr.add(eItem);
+                        } else if (bisArr.get(0).getPrayerNumber() < eItem.getPrayerNumber()) {
+                            bisArr.clear();
+                            bisArr.add(eItem);
+                        } else if (bisArr.get(0).getPrayerNumber() == eItem.getPrayerNumber()) {
+                            bisArr.add(eItem);
+                        }
+                    }
+                }
+            }
+            bisPrayerEqupiment.put(slot, bisArr.toArray(new EquippableItem[0]));
+        }
+
+        return bisPrayerEqupiment;
+    }
+
+    public EnumMap<Skills, Boolean> getTrainableStats(){ return trainableStats; }
 }

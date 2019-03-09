@@ -7,5 +7,12 @@
     "questReqs": [
       "Test Quest 2"
     ]
+  },
+  {
+    "name": "bootsStore",
+    "stock": [
+      "Test boots"
+    ],
+    "questReqs": []
   }
 ]

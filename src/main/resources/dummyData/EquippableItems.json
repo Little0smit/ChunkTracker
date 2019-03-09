@@ -23,7 +23,7 @@
       0
     ],
     "type": "Melee",
-    "slot": "MainHand"
+    "slot": "Chest"
   },
   {
     "name": "Test sword",
@@ -50,5 +50,83 @@
     ],
     "type": "Melee",
     "slot": "MainHand"
+  },
+  {
+    "name": "Prayer amulet",
+    "offensiveStats": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "defensiveStats": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "otherStats": [
+      0,
+      0,
+      0,
+      2,
+      0
+    ],
+    "type": "Melee",
+    "slot": "Neck"
+  },
+  {
+    "name": "Test shield",
+    "offensiveStats": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "defensiveStats": [
+      10,
+      10,
+      10,
+      0,
+      0
+    ],
+    "otherStats": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "type": "Melee",
+    "slot": "OffHand"
+  },
+  {
+    "name": "Test boots",
+    "offensiveStats": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "defensiveStats": [
+      5,
+      5,
+      5,
+      0,
+      0
+    ],
+    "otherStats": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "type": "Melee",
+    "slot": "Boots"
   }
 ]
