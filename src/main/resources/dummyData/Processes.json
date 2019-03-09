@@ -13,6 +13,18 @@
     "processName": "bronzeSmelting"
   },
   {
+    "skillType": "Smithing",
+    "levelRequirement": 15,
+    "inputs": [
+      "Iron ore"
+    ],
+    "outputs": [
+      "Iron bar"
+    ],
+    "questRequirements": [],
+    "processName": "ironSmelting"
+  },
+  {
     "skillType": "Woodcutting",
     "levelRequirement": 1,
     "inputs": [],
@@ -24,14 +36,46 @@
   },
   {
     "skillType": "Woodcutting",
-    "levelRequirement": 20,
+    "levelRequirement": 15,
     "inputs": [],
     "outputs": [
-      "Test logs"
+      "Oak logs"
     ],
     "questRequirements": [
       "Test Quest"
     ],
-    "processName": "testTreeChopping"
+    "processName": "oakTreeChopping"
+  },
+  {
+    "skillType": "Firemaking",
+    "levelRequirement": 1,
+    "inputs": ["Logs"],
+    "outputs": [],
+    "questRequirements": [],
+    "processName": "logsBurning"
+  },
+  {
+    "skillType": "Fletching",
+    "levelRequirement": 1,
+    "inputs": ["Logs"],
+    "outputs": [],
+    "questRequirements": [],
+    "processName": "logsFletching"
+  },
+  {
+    "skillType": "Firemaking",
+    "levelRequirement": 15,
+    "inputs": ["Oak logs"],
+    "outputs": [],
+    "questRequirements": [],
+    "processName": "oakLogsBurning"
+  },
+  {
+    "skillType": "Fletching",
+    "levelRequirement": 15,
+    "inputs": ["Oak logs"],
+    "outputs": [],
+    "questRequirements": [],
+    "processName": "oakLogsFletching"
   }
 ]
