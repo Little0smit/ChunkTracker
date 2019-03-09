@@ -2,6 +2,7 @@ package objects;
 
 import constants.Constant;
 import constants.Skills;
+import objects.quests.Quest;
 
 import java.util.ArrayList;
 import java.util.EnumMap;
@@ -43,13 +44,6 @@ public class Chunk extends NamedThing {
         for (String item : groundItems) {
             Constant.UNLOCKED_ITEM_DATABASE.registerElement(Constant.ITEM_DATABASE.getElement(item));
         }
-        //Shop Items
-        for (String shop : shops) {
-            ArrayList<String> stock = Constant.SHOP_DATABASE.getElement(shop).getStock();
-            for (String item : stock) {
-                Constant.UNLOCKED_ITEM_DATABASE.registerElement(Constant.ITEM_DATABASE.getElement(item));
-            }
-        }
         //objects.Mob Drops
         for (String mob : mobs) {
             ArrayList<String> drops = Constant.MOB_DATABASE.getElement(mob).getDrops();
@@ -77,30 +71,57 @@ public class Chunk extends NamedThing {
         }
     }
 
+    public void addShopItemsToDB(Player player){
+        for (String shop : shops) {
+            boolean hasQuestReqs = true;
+            for (String questReqs : Constant.SHOP_DATABASE.getElement(shop).getQuestReqs()){
+                hasQuestReqs = hasQuestReqs && (player.getCompletedQuests().contains(questReqs) || Constant.QUEST_DATABASE.getElement(questReqs)
+                        .isFullyCompletable(player));
+            }
+            if (hasQuestReqs) {
+                ArrayList<String> stock = Constant.SHOP_DATABASE.getElement(shop).getStock();
+                for (String item : stock) {
+                    Constant.UNLOCKED_ITEM_DATABASE.registerElement(Constant.ITEM_DATABASE.getElement(item));
+                }
+            }
+        }
+    }
+
     public EnumMap<Skills, Integer> getSkillReqs(Player player){
-        //Check if skill is trainable, otherwise the required skill is 1
         EnumMap<Skills, Integer> reqs = new EnumMap<Skills, Integer>(Skills.class);
-        for (Skills skill : Skills.values()) {
-            reqs.put(skill, 0);
+
+        //Check skills required to be able to do all skilling challenges
+        for (String skillingLocation : skillingLocations){
+            for (Process process : Constant.SKILLING_LOCATION_DATABASE.getElement(skillingLocation).getProcesses()){
+                if (player.isTrainable(process.getSkillType())) {
+                    boolean hasAllInputRequirements = true;
+                    for (String input : process.getInputs()) {
+                        hasAllInputRequirements = Constant.UNLOCKED_ITEM_DATABASE.contains(input) && hasAllInputRequirements;
+                    }
+                    if (hasAllInputRequirements) {
+                        if (!reqs.containsKey(process.getSkillType())) {
+                            reqs.put(process.getSkillType(), process.getLevelRequirement());
+                        } else if (reqs.get(process.getSkillType()) < process.getLevelRequirement()) {
+                            reqs.put(process.getSkillType(), process.getLevelRequirement());
+                        }
+                    }
+
+                }
+            }
         }
 
-        for (Skills skill : Skills.values()){
-            if (player.isTrainable(skill)){
-                for (String skillingLocation : skillingLocations){
-                    for (Process process : Constant.SKILLING_LOCATION_DATABASE.getElement(skillingLocation).getProcesses()){
-                        for (String input : process.getInputs()){
-                            if (Constant.UNLOCKED_ITEM_DATABASE.contains(input)){
-                                if (reqs.get(skill) != null){
-                                    if (reqs.get(skill) < process.getLevelRequirement()){
-                                        reqs.put(skill, process.getLevelRequirement());
-                                    }
-                                }
-                            }
+        //Check skills required to start quests
+        for (Quest quest : Constant.QUEST_DATABASE.getAllElements()) {
+            if(player.getUnlockedChunks().contains(quest.getStartingChunk())){
+                for (Skills skill : quest.getRequiredSkills().keySet()){
+                    if (player.isTrainable(skill)) {
+                        if (!reqs.containsKey(skill)) {
+                            reqs.put(skill, quest.getRequiredSkills().get(skill));
+                        } else if (reqs.get(skill) < quest.getRequiredSkills().get(skill)) {
+                            reqs.put(skill, quest.getRequiredSkills().get(skill));
                         }
                     }
                 }
-            } else {
-                reqs.put(skill, 1);
             }
         }
 
