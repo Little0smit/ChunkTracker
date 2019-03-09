@@ -18,9 +18,9 @@ public class DataParser {
         String filepath = "src/main/resources/realData/";
         if (dummy) {
             filepath = "src/main/resources/dummyData/";
+			System.out.println("Program is running on Dummy data");
         }
 		try {
-            System.out.println("Program is running on Dummy data");
             parseFile(filepath + "Mobs.json", Constant.MOB_DATABASE, Mob[].class);
             parseFile(filepath + "Shops.json", Constant.SHOP_DATABASE, Shop[].class);
             parseFile(filepath + "Processes.json", Constant.PROCESS_DATABASE, Process[].class);
@@ -44,13 +44,14 @@ public class DataParser {
 
 	private static <T extends NamedThing> void parseFile(String path, Database<T> database, Class<T[]> tClass) throws IOException {
 		Gson gson = new Gson();
-		String st, theFile = "";
+		String st;
+		StringBuilder stringBuilder = new StringBuilder();
 
 		BufferedReader br = new BufferedReader(new FileReader(new File(path)));
 		while ((st = br.readLine()) != null) {
-			theFile = theFile + st + "\n";
+			stringBuilder.append(st);
 		}
-		T[] mobs = gson.fromJson(theFile, tClass);
+		T[] mobs = gson.fromJson(stringBuilder.toString(), tClass);
 		for (T obj : mobs){
 			database.registerElement(obj);
 		}
