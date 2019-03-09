@@ -110,7 +110,7 @@ public class Chunk extends NamedThing {
 
         //Check skills required to start quests
         for (Quest quest : Constant.QUEST_DATABASE.getAllElements()) {
-            if(player.getUnlockedChunks().contains(quest.getStartingChunk())){
+            if(player.getUnlockedChunks().contains(quest.getStartingChunk()) && quest.isFullyCompletable(player)){
                 for (Skills skill : quest.getRequiredSkills().keySet()){
                     if (player.isTrainable(skill)) {
                         if (!reqs.containsKey(skill)) {
