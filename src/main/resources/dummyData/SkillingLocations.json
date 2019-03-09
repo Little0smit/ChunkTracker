@@ -2,19 +2,24 @@
   {
     "processToolName": "furnace",
     "processesNames": [
-      "bronzeSmelting"
+      "bronzeSmelting",
+      "ironSmelting"
     ]
   },
   {
     "processToolName": "tree",
     "processesNames": [
-      "treeChopping"
+      "treeChopping",
+      "logsBurning",
+      "logsFletching"
     ]
   },
   {
-    "processToolName": "testTree",
+    "processToolName": "oakTree",
     "processesNames": [
-      "testTreeChopping"
+      "oakTreeChopping",
+      "oakLogsBurning",
+      "oakLogsFletching"
     ]
   }
 ]
