@@ -20,22 +20,34 @@ public class EquippableItem extends Item{
 
 	public EquipmentSlot getSlot() { return slot; }
 
-	public int getBiSNumber(){
-		if (slot == EquipmentSlot.MainHand || slot == EquipmentSlot.OffHand || slot == EquipmentSlot.Ammo){
+	public float getBiSNumber(){
+		return getBiSNumber(type);
+	}
+
+	public float getBiSNumber(WeaponType type){
+		if (slot == EquipmentSlot.MainHand || slot == EquipmentSlot.Ammo){
 			switch (type){
 				case Magic:
 					return offensiveStats[3];
 				case Melee:
-					return (Math.max(Math.max(offensiveStats[0], offensiveStats[1]), offensiveStats[2]) +
-							otherStats[0]) /
+					return (float)((Math.max(Math.max(offensiveStats[0], offensiveStats[1]), offensiveStats[2]) +
+							otherStats[0])) /
 							otherStats[4];
 				case Ranged:
-					return (offensiveStats[4] +
-							otherStats[1]) /
+					return (float)((offensiveStats[4] +
+							otherStats[1])) /
 							otherStats[4];
 			}
 		} else {
-			return otherStats[0] + Math.max(Math.max(defensiveStats[0], defensiveStats[1]), defensiveStats[2])/1000;
+			switch (type){
+				case Ranged:
+					return otherStats[1] + (float)(defensiveStats[4])/1000;
+				case Melee:
+					return otherStats[0] + (float)(Math.max(Math.max(defensiveStats[0], defensiveStats[1]), defensiveStats[2]))/1000;
+				case Magic:
+					return otherStats[2] + (float)(defensiveStats[3])/1000;
+			}
+			return otherStats[0] + (float)(Math.max(Math.max(defensiveStats[0], defensiveStats[1]), defensiveStats[2]))/1000;
 		}
 
 		//This shouldn't ever be triggered
